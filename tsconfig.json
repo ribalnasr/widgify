@@ -11,6 +11,11 @@
       "@widgify/core": [
         "dist/widgify/core/widgify-core",
         "dist/widgify/core"
+      ],
+      "@widgify/ionic": [
+        "projects/widgify/ionic/src/public-api",
+        "dist/widgify/ionic/widgify-ionic",
+        "dist/widgify/ionic"
       ]
     },
     "baseUrl": "./",

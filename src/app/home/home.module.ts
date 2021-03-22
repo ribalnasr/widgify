@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { WidgifyModule } from '@widgify/core';
 import { WidgifyCommonModule } from '@widgify/common';
+import { WidgifyIonicModule } from '@widgify/ionic';
 
 
 
@@ -17,6 +18,7 @@ import { WidgifyCommonModule } from '@widgify/common';
     IonicModule,
     WidgifyModule,
     WidgifyCommonModule,
+    WidgifyIonicModule,
     HomePageRoutingModule
   ],
   declarations: [HomePage]

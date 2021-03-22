@@ -243,6 +243,46 @@
           }
         }
       }
+    },
+    "@widgify/ionic": {
+      "projectType": "library",
+      "root": "projects/widgify/ionic",
+      "sourceRoot": "projects/widgify/ionic/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/widgify/ionic/tsconfig.lib.json",
+            "project": "projects/widgify/ionic/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/widgify/ionic/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/widgify/ionic/src/test.ts",
+            "tsConfig": "projects/widgify/ionic/tsconfig.spec.json",
+            "karmaConfig": "projects/widgify/ionic/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/widgify/ionic/tsconfig.lib.json",
+              "projects/widgify/ionic/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
