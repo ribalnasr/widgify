@@ -1,17 +1,20 @@
 {
   "name": "widgify",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "1.0.0",
+  "author": "Ribal Nasr",
+  "homepage": "",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "core:build": "ng build @widgify/core --prod",
+    "core:publish": "cd dist/widgify/core && npm publish && cd ../../..",
+    "common:build": "ng build @widgify/common --prod",
+    "common:publish": "cd dist/widgify/common && npm publish && cd ../../.."
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "~11.2.0",
     "@angular/core": "~11.2.0",
@@ -43,6 +46,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^11.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",

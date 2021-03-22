@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { WidgifyModule } from '@widgify/core';
+import { WidgifyCommonModule } from '@widgify/common';
+
 
 
 @NgModule({
@@ -12,6 +15,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
+    WidgifyModule,
+    WidgifyCommonModule,
     HomePageRoutingModule
   ],
   declarations: [HomePage]

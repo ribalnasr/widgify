@@ -2,6 +2,17 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@widgify/common": [
+        "projects/widgify/common/src/public-api",
+        "dist/widgify/common/widgify-common",
+        "dist/widgify/common"
+      ],
+      "@widgify/core": [
+        "dist/widgify/core/widgify-core",
+        "dist/widgify/core"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
