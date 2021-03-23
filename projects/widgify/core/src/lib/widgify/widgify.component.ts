@@ -13,13 +13,13 @@ import { WidgifyBase } from '../base/base.class';
 	}
 
 })
-export class WidgifyComponent<WidgetType extends WidgifyBase> {
+export class WidgifyComponent<WidgetType extends WidgifyBase = WidgifyBase> {
 
 	public className: string;
 	public componentRef: ComponentRef<any>;
 
 	@Input('widget')
-	public set settings(widget: WidgetType) {
+	public set widget(widget: WidgetType) {
 		this.addDynamicComponent(widget);
 	}
 
@@ -33,9 +33,15 @@ export class WidgifyComponent<WidgetType extends WidgifyBase> {
 	) { }
 
 	private addDynamicComponent(widget: WidgetType = {} as WidgetType) {
-		const factory = this.factoryResolver.resolveComponentFactory(widget.component);
-		this.componentRef = this.viewContainerRef.createComponent(factory);
-		this.viewContainerRef.insert(this.componentRef.hostView);
+		if(this.componentRef && this.componentRef.instance.constructor.name !== widget.component.name) {
+			this.viewContainerRef.clear()
+			delete this.componentRef;
+		}
+		if (!this.componentRef) {
+			const factory = this.factoryResolver.resolveComponentFactory(widget.component);
+			this.componentRef = this.viewContainerRef.createComponent(factory);
+			this.viewContainerRef.insert(this.componentRef.hostView);
+		}
 		this.componentRef.instance.settings = widget.settings;
 		this.className = widget.settings.class || '';
 	}

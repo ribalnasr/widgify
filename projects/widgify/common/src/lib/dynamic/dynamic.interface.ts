@@ -1,6 +1,17 @@
 import { WidgifyBase, WidgifySettings } from '@widgify/core';
+import { Observable } from 'rxjs';
 
-export interface WidgifyDynamicSettings<Widget extends WidgifyBase = WidgifyBase> extends WidgifySettings {
-	data?: any;
-	widget?: Widget | ((data: any) => Widget);
+export interface WidgifyDynamicSettings<T, Widget extends WidgifyBase = WidgifyBase> extends WidgifySettings {
+	/**
+	 * Data can be:
+	 * - A static string, number, array, object... or any js type.
+	 * - A promise that is automatically resolved and handles its result to the widget property.
+	 * - An observable that is automatically observed and handles its result to the widget property on every change and updates the widget accordingly.
+	 */
+	data?: Observable<T> | Promise<T> | T;
+
+	/**
+	 * You can use the suplied data to update the widget type and properties
+	 */
+	widget?: Widget | ((data: T) => Widget);
 }

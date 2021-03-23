@@ -8,32 +8,32 @@ import { map, switchMap } from 'rxjs/operators';
 	selector: 'widgify-dynamic',
 	templateUrl: './dynamic.component.html',
 })
-export class WidgifyDynamicComponent extends WidgifyBaseComponent<WidgifyDynamicSettings> {
+export class WidgifyDynamicComponent<T> extends WidgifyBaseComponent<WidgifyDynamicSettings<T>> {
 
 	public widget = this.settingsChanges.pipe(
 		switchMap(
 			settings => this.toObservables(settings.data),
 		),
 		map(
-			data => typeof this.settings.widget === 'function'
+			(data: T) => typeof this.settings.widget === 'function'
 			? this.settings.widget(data)
 			: this.settings.widget
 		)
 	);
 
-	public toObservables<T>(problems: any) {
+	public toObservables(problems: any) {
 		if (!Array.isArray(problems)) {
-			return this.toObservable<T>(problems);
+			return this.toObservable(problems);
 		}
-		const observables = problems.map(problem => this.toObservable<T>(problem));
+		const observables = problems.map(problem => this.toObservable(problem));
 		return combineLatest(observables);
 	}
 
-	public toObservable<T>(problem: any) {
+	public toObservable(problem: any) {
 		if (problem instanceof Observable) {
 			return problem;
 		} else {
-			return new Observable<T>(o => {
+			return new Observable(o => {
 				Promise.resolve(problem).then(
 					result => {
 						o.next(result);

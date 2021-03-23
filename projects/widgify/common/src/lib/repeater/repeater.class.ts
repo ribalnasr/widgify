@@ -1,9 +1,9 @@
 import { WidgifyBase } from '@widgify/core';
 import { WidgifyRepeaterSettings } from './repeater.interface';
-import { WidgifyRepeaterComponent } from './repeater.component';
+import { WidgifyRepeaterComponent, WidgifyRepeaterList } from './repeater.component';
 
-export class WidgifyRepeater extends WidgifyBase<WidgifyRepeaterSettings> {
+export class WidgifyRepeater<T> extends WidgifyBase<WidgifyRepeaterSettings<T>> {
 	public component = WidgifyRepeaterComponent;
-	public defaults: WidgifyRepeaterSettings = { data: [], widget: null};
+	public defaults: WidgifyRepeaterSettings<T> = { list: new WidgifyRepeaterList<T>() };
 
 }
