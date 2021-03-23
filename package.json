@@ -10,10 +10,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "cli:build": "npm run build -prefix ./projects/widgify/cli",
+    "cli:publish": "cd dist/widgify/cli && npm publish && cd ../../..",
     "core:build": "ng build @widgify/core --prod",
     "core:publish": "cd dist/widgify/core && npm publish && cd ../../..",
     "common:build": "ng build @widgify/common --prod",
-    "common:publish": "cd dist/widgify/common && npm publish && cd ../../.."
+    "common:publish": "cd dist/widgify/common && npm publish && cd ../../..",
+    "ionic:build": "ng build @widgify/ionic --prod",
+    "ionic:publish": "cd dist/widgify/ionic && npm publish && cd ../../.."
   },
   "dependencies": {
     "@angular/common": "~11.2.0",
