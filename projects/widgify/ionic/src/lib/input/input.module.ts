@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 import { WidgifyModule } from "@widgify/core";
 import { WidgifyIonInputComponent } from './input.component';
@@ -14,7 +15,8 @@ import { WidgifyIonInputComponent } from './input.component';
     imports: [
         CommonModule,
         IonicModule,
-        WidgifyModule
+        WidgifyModule,
+        ReactiveFormsModule
     ]
 }) export class WidgifyIonInputModule { }
 

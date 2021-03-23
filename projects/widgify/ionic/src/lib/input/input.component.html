@@ -1,1 +1,4 @@
-<ion-input [value]="settings.value" [placeholder]="settings.placeholder"></ion-input>
+<ion-input *ngIf="settings.formControl; else withValue" [formControl]="settings.formControl" [placeholder]="settings.placeholder"></ion-input>
+<ng-template #withValue>
+    <ion-input [value]="settings.value" [placeholder]="settings.placeholder"></ion-input>
+</ng-template>
