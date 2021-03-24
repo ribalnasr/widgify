@@ -1,24 +1,20 @@
-# Core
+**@widgify/core** is the core library that make everything possible.
+It consists mainly on 2 elements:
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+#### - The \<widgify> component that takes a [widget] input:
 
-## Code scaffolding
+This is where your widgets are loaded to the UI. [Learn more](https://github.com/ribalnasr/widgify/wiki/The-widgify-Component)
 
-Run `ng generate component component-name --project core` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project core`.
-> Note: Don't forget to add `--project core` or else it will be added to the default project in your `angular.json` file. 
+#### - The base for every other widget out there:
 
-## Build
+If you're interested in creating your own widgets, you will be creating 3 files extended from
+- a **WidgifyBase** class
+- a **WidgifyBaseComponent** class (with an html and possibly some css)
+- a **WidgifySettings** interface
 
-Run `ng build core` to build the project. The build artifacts will be stored in the `dist/` directory.
+[Learn more](https://github.com/ribalnasr/widgify/wiki/Base-Class,-Component-and-Interface) about these base files.
 
-## Publishing
-
-After building your library with `ng build core`, go to the dist folder `cd dist/core` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test core` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Installation
+```sh
+nom i -s @widgify/core
+```

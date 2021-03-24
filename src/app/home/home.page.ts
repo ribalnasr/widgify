@@ -31,15 +31,14 @@ export class HomePage {
 
   public form = new WidgifyForm({
     formGroup: formBuilder => formBuilder.group({
-      name: ['1d2', Validators.required],
-      age: [24, [Validators.required, Validators.min(12)]],
+      name: ['', Validators.required],
     }),
     content: formGroup => new WidgifyGroup({
       widgets: [
         new WidgifyIonItem({
           content: [
-            new WidgifyIonLabel({ content: 'label' }),
-            new WidgifyIonInput({ formControl: formGroup.controls.name, placeholder: 'enter value' })
+            new WidgifyIonLabel({ content: 'Your Name' }),
+            new WidgifyIonInput({ formControl: formGroup.controls.name, placeholder: 'Please enter your name.' })
           ]
         }),
       ]
@@ -83,10 +82,12 @@ export class HomePage {
       }),
   })
 
-  public widget = this.dynamicWidget;
+  public widget = this.form;
 
   ngOnInit() {
     this.clickCount.next(0);
   }
+
+
 
 }
