@@ -4,6 +4,10 @@ import { WidgifyIonInputComponent } from './input.component';
 
 export class WidgifyIonInput extends WidgifyBase<WidgifyIonInputSettings> {
 	public component = WidgifyIonInputComponent;
-	public defaults: WidgifyIonInputSettings = {};
+	public defaults: WidgifyIonInputSettings = {
+		type: 'text',
+		readonly: false,
+		required: false
+	};
 
 }

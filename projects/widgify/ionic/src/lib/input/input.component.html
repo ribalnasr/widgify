@@ -1,4 +1,12 @@
-<ion-input *ngIf="settings.formControl; else withValue" [formControl]="settings.formControl" [placeholder]="settings.placeholder"></ion-input>
+<ng-container *ngIf="settings.formControl; else withValue">
+    <ion-input [type]="settings.type" [step]="settings.step" [spellcheck]="settings.spellcheck" [size]="settings.size"
+        [required]="settings.required" [readonly]="settings.readonly" [multiple]="settings.multiple"
+        [name]="settings.name" [pattern]="settings.pattern" [placeholder]="settings.placeholder"
+        [formControl]="settings.formControl"></ion-input>
+</ng-container>
 <ng-template #withValue>
-    <ion-input [value]="settings.value" [placeholder]="settings.placeholder"></ion-input>
+    <ion-input [type]="settings.type" [step]="settings.step" [spellcheck]="settings.spellcheck" [size]="settings.size"
+        [required]="settings.required" [readonly]="settings.readonly" [multiple]="settings.multiple"
+        [name]="settings.name" [pattern]="settings.pattern" [placeholder]="settings.placeholder"
+        [value]="settings.value"></ion-input>
 </ng-template>

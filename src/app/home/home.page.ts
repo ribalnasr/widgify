@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WidgifyBase } from '@widgify/core';
-import { of } from 'rxjs';
+import { of, ReplaySubject } from 'rxjs';
 import { WidgifyGroup, WidgifyDynamic, WidgifyForm, WidgifyText, WidgifyRepeater, WidgifyMouseEvent, WidgifyRepeaterList } from '@widgify/common';
 import { WidgifyIonInput, WidgifyIonItem, WidgifyIonLabel } from '@widgify/ionic';
 import { Validators } from '@angular/forms';
@@ -31,7 +31,7 @@ export class HomePage {
 
   public form = new WidgifyForm({
     formGroup: formBuilder => formBuilder.group({
-      name: ['qwd', Validators.required],
+      name: ['1d2', Validators.required],
       age: [24, [Validators.required, Validators.min(12)]],
     }),
     content: formGroup => new WidgifyGroup({
@@ -51,7 +51,7 @@ export class HomePage {
     placeholder: 'enter value'
   })
 
-  private repeaterList = new WidgifyRepeaterList([2,4,6,8]);
+  private repeaterList = new WidgifyRepeaterList([2, 4, 6, 8]);
   public repeater = new WidgifyRepeater({
     list: this.repeaterList,
     widget: row => new WidgifyMouseEvent({
@@ -63,18 +63,30 @@ export class HomePage {
     })
   })
 
-  public group = new WidgifyGroup({
-    widgets: [
+  private clickCount = new ReplaySubject<number>();
+  public dynamicWidget = new WidgifyDynamic({
+    class: 'dynamic',
+    data: this.clickCount,
+    widget: count =>
       new WidgifyMouseEvent({
-        click: () => this.repeaterList.add(99),
-        widget: new WidgifyText({ content: 'ADD' })
-      }), 
-      this.repeater
-    ]
+        click: () => {
+          this.clickCount.next(count + 1)
+        },
+        widget: new WidgifyGroup({
+          widgets: [
+            new WidgifyText({ content: 'Click me!' }),
+            new WidgifyText({
+              content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
+            })
+          ]
+        })
+      }),
   })
 
+  public widget = this.dynamicWidget;
 
-
-  public widget = this.group;
+  ngOnInit() {
+    this.clickCount.next(0);
+  }
 
 }
