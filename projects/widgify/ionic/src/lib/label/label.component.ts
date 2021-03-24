@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WidgifyIonLabelSettings } from './label.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
-import { WidgifyText } from '../../../../common/src/public-api';
+import { WidgifyText } from '@widgify/common';
 @Component({
 	selector: 'widgify-ion-label',
 	templateUrl: './label.component.html',

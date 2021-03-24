@@ -3,25 +3,25 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@widgify/cli": [
-        "dist/widgify/cli/widgify-cli",
-        "dist/widgify/cli"
-      ],
-      "@widgify/common": [
-        "projects/widgify/common/src/public-api",
-        "dist/widgify/common/widgify-common",
-        "dist/widgify/common"
-      ],
-      "@widgify/core": [
-        "projects/widgify/core/src/public-api",
-        "dist/widgify/core/widgify-core",
-        "dist/widgify/core"
-      ],
-      "@widgify/ionic": [
-        "projects/widgify/ionic/src/public-api",
-        "dist/widgify/ionic/widgify-ionic",
-        "dist/widgify/ionic"
-      ]
+      // "@widgify/cli": [
+      //   "dist/widgify/cli/widgify-cli",
+      //   "dist/widgify/cli"
+      // ],
+      // "@widgify/common": [
+      //   // "projects/widgify/common/src/public-api",
+      //   "dist/widgify/common/widgify-common",
+      //   "dist/widgify/common"
+      // ],
+      // "@widgify/core": [
+      //   // "projects/widgify/core/src/public-api",
+      //   "dist/widgify/core/widgify-core",
+      //   "dist/widgify/core"
+      // ],
+      // "@widgify/ionic": [
+      //   // "projects/widgify/ionic/src/public-api",
+      //   "dist/widgify/ionic/widgify-ionic",
+      //   "dist/widgify/ionic"
+      // ]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -33,7 +33,10 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2018", "dom"]
+    "lib": [
+      "es2018",
+      "dom"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

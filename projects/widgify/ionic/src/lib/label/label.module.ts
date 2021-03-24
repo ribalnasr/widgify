@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 import { WidgifyModule } from "@widgify/core";
-import { WidgifyTextModule } from "../../../../common/src/public-api";
+import { WidgifyTextModule } from "@widgify/common";
 import { WidgifyIonLabelComponent } from './label.component';
 
 @NgModule({
