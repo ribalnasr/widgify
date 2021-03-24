@@ -1,5 +1,5 @@
-**@widgify/core** is the core library that make everything possible.
-It consists mainly on 2 elements:
+**@widgify/core** is the core library that makes everything possible.
+It consists mainly of 2 elements:
 
 #### - The \<widgify> component that takes a [widget] input:
 
