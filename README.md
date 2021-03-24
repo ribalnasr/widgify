@@ -1,13 +1,12 @@
 # Widgify
 ## _Use Ready-Made Widgets for your Angular projects, download third-party ones or create your own._
 
+Widgify is an Angular library that makes it easy to create and/or reuse widgets.
+Widgets are components with a settings property that you can use within your Angular code without having to write more than one html line.
 
-Widgify is an Angular library that makes it easy to create and/or reuse widgets from components with a settings property and reuse them within your Angular code without having to write more than one html line.
-
-## [READ THE COMPLETE WIKI DOCS](https://github.com/ribalnasr/widgify/wiki)
 ## NOTE: This library is still in its early development phase.
 
-Widgify is perfect to create content managment systems and dashboards for your application. It can be used as a complete UI or just a part of it.
+Widgify is perfect for creating content management systems and dashboards for your application. It can be used as a complete UI or just a part of it.
 
 ## Looking for Collaborators
 
@@ -31,6 +30,7 @@ _component.ts_
 ```
 
 ...or a slightly more complex example:
+
 _component.ts_
 ```ts
   private clickCount = new ReplaySubject<number>();
@@ -69,12 +69,12 @@ npm i -s @widgify/core @widgify/common
 
 ## Documentation
 
-[__@widgify/core__](https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library) is the core library that make everything possible.
-It consists mainly on 2 elements:
+[__@widgify/core__](https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library) is the core library that makes everything possible.
+It consists mainly of 2 elements:
 - The base for every other widget created or to be created.
 - The <widgify> component that takes a [widget] input.
 
-_more at https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library
+_more at https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library_
 
 ----
 
@@ -99,9 +99,4 @@ Instructions on how to use them in your own application are linked below.
 
 We would love to add more and more plugins, like AngularMaterial widgets or maybe some Graphs & Charts, and once again, you're welcome to create your own and share them with us to be listed here :)
 
-## Donate
-If you like this project and want to help me to make it my full-time job, please donate:
-
-## License
-
-MIT
+### Next: [__@widgify/core →__](https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library)
