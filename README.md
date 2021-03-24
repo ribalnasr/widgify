@@ -4,6 +4,7 @@
 Widgify is an Angular library that makes it easy to create and/or reuse widgets.
 Widgets are components with a settings property that you can use within your Angular code without having to write more than one html line.
 
+## [READ THE COMPLETE WIKI DOCS](https://github.com/ribalnasr/widgify/wiki)
 ## NOTE: This library is still in its early development phase.
 
 Widgify is perfect for creating content management systems and dashboards for your application. It can be used as a complete UI or just a part of it.
