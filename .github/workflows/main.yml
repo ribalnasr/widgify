@@ -27,7 +27,4 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Install Angular
-        run: sudo npm i -g @angular/cli
-        
-      - name: Install Dependencies
-        run: echo Install Dependencies
+        run: ls -d */
