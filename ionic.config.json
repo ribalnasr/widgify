@@ -1,5 +1,7 @@
 {
   "name": "widgify",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

@@ -1,0 +1,29 @@
+<ion-split-pane #pane contentId="main" [when]="true">
+  <ion-menu contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-icon slot="start" name="grid">
+        </ion-icon>
+        <ion-title>
+          Widgify
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <wi-sidemenu></wi-sidemenu>
+    </ion-content>
+  </ion-menu>
+
+
+  <div id="main">
+    <ion-header translucent="true">
+      <ion-toolbar>
+        <ion-title>Settings</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content [fullscreen]="true">
+      <router-outlet></router-outlet>
+    </ion-content>
+  </div>
+</ion-split-pane>

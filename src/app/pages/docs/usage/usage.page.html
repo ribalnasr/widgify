@@ -1,0 +1,37 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <markdown [src]="'/wiki/docs/usage-1.md'"></markdown>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Result</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <widgify [widget]="helloWidgify"></widgify>
+        </ion-card-content>
+      </ion-card>
+
+      <markdown [src]="'/wiki/docs/usage-2.md'"></markdown>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Result</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <widgify [widget]="clickMe"></widgify>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="auto">Next:</ion-col>
+        <ion-col size="auto">
+          <ion-button fill="clear">
+            Installation
+            <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+          </ion-button>
+
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-grid>
