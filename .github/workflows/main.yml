@@ -26,15 +26,17 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Angular
         run: sudo npm i -g @angular/cli
+      - name: Checkout to Master
+        run: git checkout master
       - name: Merge from Prerender
         run: git merge prerender
       - name: Install Dependencies
         run: npm i 
       - name: Prerender Site
         run: npm run prerender
-      - name: Github login 
+      - name: Github Config User Email 
         run: git config --global user.email "ribal.nasr@gmail.com"
-      - name: Github login 
+      - name: Github Config User Name 
         run: git config --global user.name "Ribal - Automated Prerender"
       - name: Stage changes 
         run: git add -A
