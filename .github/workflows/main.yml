@@ -31,7 +31,7 @@ jobs:
       - name: Checkout to Master
         run: git checkout master
       - name: Merge from Prerender
-        run: git merge prerender
+        run: git merge prerender --allow-unrelated-histories
       - name: Install Dependencies
         run: npm i 
       - name: Prerender Site
