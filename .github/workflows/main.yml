@@ -34,9 +34,11 @@ jobs:
         run: npm run prerender
       - name: Github login 
         run: git config --global user.email "ribal.nasr@gmail.com"
+      - name: Github login 
+        run: git config --global user.name "Ribal - Automated Prerender"
       - name: Stage changes 
         run: git add -A
       - name: Commit changes 
         run: git commit -m "Updated prerender."
-      - name: Commit changes 
+      - name: Push changes 
         run: git push
