@@ -24,22 +24,22 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Install Angular
-        run: sudo npm i -g @angular/cli
+      - name: Github Config User Email 
+        run: git config --global user.email "ribal.nasr@gmail.com"
+      - name: Github Config User Name 
+        run: git config --global user.name "Ribal - Automated Prerender"
       - name: Fetch All
         run: git fetch
       - name: Checkout to Master
         run: git checkout master
       - name: Merge from Prerender
         run: git merge prerender --allow-unrelated-histories
+      - name: Install Angular
+        run: sudo npm i -g @angular/cli
       - name: Install Dependencies
         run: npm i 
       - name: Prerender Site
         run: npm run prerender
-      - name: Github Config User Email 
-        run: git config --global user.email "ribal.nasr@gmail.com"
-      - name: Github Config User Name 
-        run: git config --global user.name "Ribal - Automated Prerender"
       - name: Stage changes 
         run: git add -A
       - name: Commit changes 
