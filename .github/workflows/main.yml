@@ -26,9 +26,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Angular
         run: sudo npm i -g @angular/cli
+      - name: Merge from Prerender
+        run: git merge prerender
       - name: Install Dependencies
         run: npm i 
       - name: Prerender Site
         run: npm run prerender
-      - name: List folders
-        run: ls -d */
+      - name: Stage changes 
+        run: git add -A
+      - name: Commit changes 
+        run: git commit -m "Updated prerender."
+      - name: Commit changes 
+        run: git push
