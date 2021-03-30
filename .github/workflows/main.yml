@@ -33,7 +33,7 @@ jobs:
       - name: Checkout to Master
         run: git checkout master
       - name: Merge from Prerender
-        run: git merge prerender --allow-unrelated-histories
+        run: git merge origin/prerender --allow-unrelated-histories -X theirs
       - name: Install Angular
         run: sudo npm i -g @angular/cli
       - name: Install Dependencies
