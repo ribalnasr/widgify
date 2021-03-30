@@ -26,6 +26,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Install Angular
         run: sudo npm i -g @angular/cli
+      - name: Fetch All
+        run: git fetch
       - name: Checkout to Master
         run: git checkout master
       - name: Merge from Prerender
