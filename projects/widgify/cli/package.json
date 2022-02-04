@@ -1,6 +1,6 @@
 {
   "name": "@widgify/cli",
-  "version": "1.0.3",
+  "version": "1.0.9",
   "description": "",
   "preferGlobal": true,
   "bin": {
@@ -13,6 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@widgify/common": "^1.0.5",
+    "@widgify/core": "^1.0.7",
     "shelljs": "^0.8.4",
     "yargs": "^15.3.1"
   },

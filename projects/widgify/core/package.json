@@ -1,6 +1,6 @@
 {
   "name": "@widgify/core",
-  "version": "1.0.3",
+  "version": "1.0.7",
   "peerDependencies": {},
   "dependencies": {
     "tslib": "^2.0.0"

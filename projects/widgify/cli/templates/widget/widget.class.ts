@@ -1,13 +1,13 @@
 import { WidgifyBase } from '@widgify/core';
-import { WidgifyWidgetSettings } from './widget.interface';
-import { WidgifyWidgetComponent } from './widget.component';
+import { WidgetSettings } from './widget.interface';
+import { WidgetComponent } from './widget.component';
 
-export class WidgifyWidget extends WidgifyBase<WidgifyWidgetSettings> {
-	public component = WidgifyWidgetComponent;
+export class Widget extends WidgifyBase<WidgetSettings> {
+	public override component = WidgetComponent;
 
 	/**
-	 * The default settings for WidgifyWidget.
+	 * The default settings for Widget.
 	 */
-	public defaults: WidgifyWidgetSettings = {};
+	public override defaults: WidgetSettings = {};
 
 }

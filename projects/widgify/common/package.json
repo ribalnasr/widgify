@@ -1,8 +1,8 @@
 {
   "name": "@widgify/common",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "peerDependencies": {
-    "@widgify/core": "^1.0.3"
+    "@widgify/core": "^1.0.5"
   },
   "dependencies": {
     "tslib": "^2.0.0"

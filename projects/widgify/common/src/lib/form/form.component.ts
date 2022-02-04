@@ -15,10 +15,10 @@ export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettin
 		super();
 	}
 
-	public widget = this.settingsChanges.pipe(
+	public widget = this.settings$.pipe(
 		map(settings => {
 			const formGroup = this.settings.formGroup(this.formBuilder);
-			return settings.content(formGroup);
+			return settings.current.content(formGroup);
 		})
 	)
 

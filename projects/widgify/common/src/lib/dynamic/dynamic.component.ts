@@ -10,14 +10,14 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class WidgifyDynamicComponent<T> extends WidgifyBaseComponent<WidgifyDynamicSettings<T>> {
 
-	public widget = this.settingsChanges.pipe(
+	public widget = this.settings$.pipe(
 		switchMap(
-			settings => this.toObservables(settings.data),
+			settings => this.toObservables(settings.current.data),
 		),
 		map(
 			(data: T) => typeof this.settings.widget === 'function'
-			? this.settings.widget(data)
-			: this.settings.widget
+				? this.settings.widget(data)
+				: this.settings.widget
 		)
 	);
 

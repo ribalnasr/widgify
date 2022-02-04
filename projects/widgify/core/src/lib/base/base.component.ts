@@ -8,16 +8,33 @@ import { ReplaySubject } from 'rxjs';
 })
 export class WidgifyBaseComponent<Settings extends WidgifySettings> {
 
-	public settingsChanges = new ReplaySubject<Settings>();
+	public settings$ = new ReplaySubject<{ current: Settings; previous: Settings; }>();
+	public onSettingsChange = (_current: Settings, _previous: Settings) => { };
+
+	/**
+	 * @deprecated Use settings$ instead.
+	 */
+	public settingsChanges = this.settings$;
 
 	private _settings: Settings;
-	@Input('settings')
+	@Input()
+	public set settings(value) {
+		this._previousSettings = this._settings;
+		this._settings = { ...value };
+		this.onSettingsChange(this._settings, this._previousSettings);
+		this.settings$.next({
+			current: this.settings,
+			previous: this._previousSettings
+		});
+	};
 	public get settings() {
 		return this._settings;
 	};
-	public set settings(value) {
-		this._settings = value;
-		this.settingsChanges.next(value);
+
+	private _previousSettings: Settings;
+
+	public get previousSettings() {
+		return this._previousSettings;
 	};
 
 }
