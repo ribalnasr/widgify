@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WidgifyBase } from '@widgify/core';
-import { of, ReplaySubject } from 'rxjs';
-import { WidgifyGroup, WidgifyDynamic, WidgifyForm, WidgifyText, WidgifyRepeater, WidgifyMouseEvent, WidgifyRepeaterList } from '@widgify/common';
+import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
+import { WidgifyGroup, WidgifyDynamic, WidgifyForm, WidgifyText, WidgifyRepeater, WidgifyMouseEvent, WidgifyRepeaterList, widgifyIframe } from '@widgify/common';
 import { WidgifyIonInput, WidgifyIonItem, WidgifyIonLabel } from '@widgify/ionic';
 import { Validators } from '@angular/forms';
 
@@ -62,7 +62,7 @@ export class HomePage {
     })
   })
 
-  private clickCount = new ReplaySubject<number>();
+  private clickCount = new BehaviorSubject<number>(0);
   public dynamicWidget = new WidgifyDynamic({
     class: 'dynamic',
     data: this.clickCount,
@@ -82,11 +82,12 @@ export class HomePage {
       }),
   })
 
-  public widget = this.form;
+  public iframe = widgifyIframe({
+    class: 'hehe',
+    src: '/'
+  })
 
-  ngOnInit() {
-    this.clickCount.next(0);
-  }
+  public widget = this.iframe;
 
 
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WidgifyDynamic, WidgifyGroup, WidgifyMouseEvent, WidgifyText } from '@widgify/common';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'wi-usage',
@@ -12,7 +12,7 @@ export class UsagePage {
     content: 'Hello Widgify!'
   })
 
-  private clickCount = new ReplaySubject<number>();
+  private clickCount = new BehaviorSubject<number>(0);
   public clickMe = new WidgifyDynamic({
     class: 'dynamic',
     data: this.clickCount,
@@ -31,10 +31,6 @@ export class UsagePage {
         })
       }),
   })
-
-  ngOnInit() {
-    this.clickCount.next(0);
-  }
 
 
 }

@@ -4,7 +4,7 @@ import * as yargs from 'yargs';
 // import * as shell from 'shelljs';
 import * as path from 'path';
 // import * as child_process from 'child_process';
-import { toPascalCase, readFile, writeFile, createFolder, copyFile } from './utils';
+import { toPascalCase, readFile, writeFile, createFolder, copyFile, toCamelCase } from './utils';
 
 class WidgifyCli {
 
@@ -25,22 +25,39 @@ class WidgifyCli {
             return;
         }
 
-        let kebabCase = widgetName.toLowerCase();
-        const filename = kebabCase;
+        const names = {
+            'kebab-case': widgetName.toLowerCase(),
+            'prefix-kebab-case': '',
+            'PascalCase': '',
+            'PrefixPascalCase': '',
+            'prefixCamelCase': '',
+        };
 
-        await createFolder(filename);
+        names['prefix-kebab-case'] = argv.prefix + '-' + names['kebab-case'];
+        names['PascalCase'] = toPascalCase(names['kebab-case']);
+        names['PrefixPascalCase'] = toPascalCase(names['prefix-kebab-case']);
+        names['prefixCamelCase'] = toCamelCase(names['prefix-kebab-case']);
 
-        if (argv.prefix) {
-            kebabCase = argv.prefix + '-' + kebabCase;
-        }
-
-        const PascalCase = toPascalCase(kebabCase);
+        await createFolder(names['kebab-case']);
 
         for (const suffix of ['.class.ts', '.component.html', '.component.ts', '.interface.ts', '.module.ts']) {
-            const filePath = `${filename}/${filename}${suffix}`;
+            const filePath = `${names['kebab-case']}/${names['kebab-case']}${suffix}`;
             await copyFile(path.resolve(__dirname, `../templates/widget/widget${suffix}`), filePath);
-            const file = (await readFile(filePath)).replace(/Widget/g, PascalCase).replace(/widget/g, kebabCase);
-            await writeFile(filePath, file);
+            const fileContent = (await readFile(filePath))
+                // Convert template names to safe strings to prevent bugs if name will contain string 'widget'.
+                .replace(/prefix-widget/g, '{{prefix-kebab-case}}')
+                .replace(/PrefixWidget/g, '{{PrefixPascalCase}}')
+                .replace(/prefixWidget/g, '{{prefixCamelCase}}')
+                .replace(/Widget/g, '{{PascalCase}}')
+                .replace(/widget/g, '{{kebab-case}}')
+                // Replace with final name values
+                .replace(/{{prefix-kebab-case}}/g, names['prefix-kebab-case'])
+                .replace(/{{PrefixPascalCase}}/g, names['PrefixPascalCase'])
+                .replace(/{{prefixCamelCase}}/g, names['prefixCamelCase'])
+                .replace(/{{PascalCase}}/g, names['PascalCase'])
+                .replace(/{{kebab-case}}/g, names['kebab-case'])
+
+            await writeFile(filePath, fileContent);
         }
 
     }

@@ -7,7 +7,7 @@ _component.html_
 ```
 _component.ts_
 ```ts
-  private clickCount = new ReplaySubject<number>();
+  private clickCount = new BehaviorSubject<number>();
   public clickMe = new WidgifyDynamic({
     class: 'dynamic',
     data: this.clickCount,
@@ -27,8 +27,5 @@ _component.ts_
       }),
   })
 
-  ngOnInit() {
-    this.clickCount.next(0);
-  }
 ```
 

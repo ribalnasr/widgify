@@ -7,11 +7,11 @@
       //   "dist/widgify/cli/widgify-cli",
       //   "dist/widgify/cli"
       // ],
-      // "@widgify/common": [
-      //   // "projects/widgify/common/src/public-api",
-      //   "dist/widgify/common/widgify-common",
-      //   "dist/widgify/common"
-      // ],
+      "@widgify/common": [
+        "projects/widgify/common/src/public-api",
+        // "dist/widgify/common/widgify-common",
+        // "dist/widgify/common"
+      ],
       // "@widgify/core": [
       //   // "projects/widgify/core/src/public-api",
       //   "dist/widgify/core/widgify-core",

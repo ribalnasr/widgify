@@ -1,13 +1,15 @@
 import { WidgifyBase } from '@widgify/core';
-import { WidgetSettings } from './widget.interface';
-import { WidgetComponent } from './widget.component';
+import { PrefixWidgetSettings } from './widget.interface';
+import { PrefixWidgetComponent } from './widget.component';
 
-export class Widget extends WidgifyBase<WidgetSettings> {
-	public override component = WidgetComponent;
+export class PrefixWidget extends WidgifyBase<PrefixWidgetSettings> {
+	public override component = PrefixWidgetComponent;
 
 	/**
 	 * The default settings for Widget.
 	 */
-	public override defaults: WidgetSettings = {};
+	public override defaults: PrefixWidgetSettings = {};
 
 }
+
+export const prefixWidget = (settings: PrefixWidgetSettings) => new PrefixWidget(settings);

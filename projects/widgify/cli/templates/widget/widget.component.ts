@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { WidgetSettings } from './widget.interface';
+import { PrefixWidgetSettings } from './widget.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
 
 @Component({
-	selector: 'widget',
+	selector: 'prefix-widget',
 	templateUrl: './widget.component.html',
 })
-export class WidgetComponent extends WidgifyBaseComponent<WidgetSettings> {
+export class PrefixWidgetComponent extends WidgifyBaseComponent<PrefixWidgetSettings> {
 
 	/**
 	 * Add your widget's logic here.
@@ -14,10 +14,20 @@ export class WidgetComponent extends WidgifyBaseComponent<WidgetSettings> {
 	 * You can watch the widget settings changes by subscribing to this.settings$.
 	 */
 
-	public override onSettingsChange = (_current: WidgetSettings, _previous: WidgetSettings) => {
+	constructor(
+		/**
+		 * Inject Angular services here to use them inside this component.
+		 */
+	) {
+		super()
+	}
+
+	public override onSettingsChange = (_current: PrefixWidgetSettings, _previous: PrefixWidgetSettings) => {
 		/**
 		 * Here you can add tasks you want te be performed everytime the settings are changed.
 		 */
 	};
+
+
 
 }
