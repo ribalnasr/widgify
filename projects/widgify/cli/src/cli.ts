@@ -25,16 +25,19 @@ class WidgifyCli {
             return;
         }
 
-        const kebabCase = widgetName.toLowerCase();
-        let PascalCase = toPascalCase(kebabCase);
-        await createFolder(kebabCase);
+        let kebabCase = widgetName.toLowerCase();
+        const filename = kebabCase;
+
+        await createFolder(filename);
 
         if (argv.prefix) {
-            PascalCase = toPascalCase(argv.prefix + '-' + kebabCase);
+            kebabCase = argv.prefix + '-' + kebabCase;
         }
 
+        const PascalCase = toPascalCase(kebabCase);
+
         for (const suffix of ['.class.ts', '.component.html', '.component.ts', '.interface.ts', '.module.ts']) {
-            const filePath = `${kebabCase}/${kebabCase}${suffix}`;
+            const filePath = `${filename}/${filename}${suffix}`;
             await copyFile(path.resolve(__dirname, `../templates/widget/widget${suffix}`), filePath);
             const file = (await readFile(filePath)).replace(/Widget/g, PascalCase).replace(/widget/g, kebabCase);
             await writeFile(filePath, file);
