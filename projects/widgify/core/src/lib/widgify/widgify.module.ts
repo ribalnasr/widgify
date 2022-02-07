@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WidgifyComponent } from './widgify.component';
+import { WidgifyComponent, WidgifyDirective } from './widgify.component';
 
 @NgModule({
 	imports: [
@@ -8,9 +8,11 @@ import { WidgifyComponent } from './widgify.component';
 	],
 	declarations: [
 		WidgifyComponent,
+		WidgifyDirective,
 	],
 	exports: [
 		WidgifyComponent,
+		WidgifyDirective,
 	],
 })
 export class WidgifyModule { }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { WidgifyDynamicSettings } from './dynamic.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
 import { Observable, combineLatest } from 'rxjs';
@@ -7,6 +7,8 @@ import { map, switchMap } from 'rxjs/operators';
 @Component({
 	selector: 'widgify-dynamic',
 	templateUrl: './dynamic.component.html',
+	encapsulation: ViewEncapsulation.Emulated,
+
 })
 export class WidgifyDynamicComponent<T> extends WidgifyBaseComponent<WidgifyDynamicSettings<T>> {
 

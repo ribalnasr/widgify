@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { WidgifyBase } from '@widgify/core';
-import { BehaviorSubject, of, ReplaySubject } from 'rxjs';
-import { WidgifyGroup, WidgifyDynamic, WidgifyForm, WidgifyText, WidgifyRepeater, WidgifyMouseEvent, WidgifyRepeaterList, widgifyIframe } from '@widgify/common';
-import { WidgifyIonInput, WidgifyIonItem, WidgifyIonLabel } from '@widgify/ionic';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { widgifyBase } from '@widgify/core';
+import { BehaviorSubject, of } from 'rxjs';
+import { widgifyGroup, widgifyDynamic, widgifyForm, widgifyText, widgifyRepeater, widgifyMouseEvent, widgifyRepeaterList } from '@widgify/common';
+import { widgifyIonButton, widgifyIonGrid, widgifyIonIcon, widgifyIonInput, widgifyIonItem, widgifyIonLabel } from '@widgify/ionic';
 import { Validators } from '@angular/forms';
+import { widgifyIonRow } from '../../../projects/widgify/ionic/src/lib/row/row.class';
+import { widgifyIonCol } from '../../../projects/widgify/ionic/src/lib/col/col.class';
 
 @Component({
   selector: 'app-home',
@@ -13,68 +15,75 @@ import { Validators } from '@angular/forms';
 export class HomePage {
 
 
-  public base = new WidgifyBase({
+  public base = widgifyBase({
     class: 'base'
   })
 
-  public text = new WidgifyText({
+  public text = widgifyText({
     content: 'text goes here'
   })
 
-  public dynamic = new WidgifyDynamic({
+  public dynamic = widgifyDynamic({
     class: 'dynamic',
     data: of('dynamicData'),
-    widget: data => new WidgifyBase({
+    widget: data => widgifyBase({
       class: data
     })
   })
 
-  public form = new WidgifyForm({
+  public form = widgifyForm({
     formGroup: formBuilder => formBuilder.group({
       name: ['', Validators.required],
+      surname: ['nasr', Validators.required],
     }),
-    content: formGroup => new WidgifyGroup({
+    content: formGroup => widgifyGroup({
       widgets: [
-        new WidgifyIonItem({
+        widgifyIonItem({
           content: [
-            new WidgifyIonLabel({ content: 'Your Name' }),
-            new WidgifyIonInput({ formControl: formGroup.controls.name, placeholder: 'Please enter your name.' })
+            widgifyIonLabel({ content: 'Your Name' }),
+            widgifyIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
+          ]
+        }),
+        widgifyIonItem({
+          content: [
+            widgifyIonLabel({ content: 'Your surname' }),
+            widgifyIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
           ]
         }),
       ]
     })
   })
 
-  public ionInput = new WidgifyIonInput({
+  public ionInput = widgifyIonInput({
     value: 'testtest',
     placeholder: 'enter value'
   })
 
-  private repeaterList = new WidgifyRepeaterList([2, 4, 6, 8]);
-  public repeater = new WidgifyRepeater({
+  private repeaterList = widgifyRepeaterList([2, 4, 6, 8]);
+  public repeater = widgifyRepeater({
     list: this.repeaterList,
-    widget: row => new WidgifyMouseEvent({
+    widget: row => widgifyMouseEvent({
       click: () => {
         console.log(row)
         return row.update(7);
       },
-      widget: new WidgifyText({ content: row.data })
+      widget: widgifyText({ content: row.data })
     })
   })
 
   private clickCount = new BehaviorSubject<number>(0);
-  public dynamicWidget = new WidgifyDynamic({
+  public dynamicWidget = widgifyDynamic({
     class: 'dynamic',
     data: this.clickCount,
     widget: count =>
-      new WidgifyMouseEvent({
+      widgifyMouseEvent({
         click: () => {
           this.clickCount.next(count + 1)
         },
-        widget: new WidgifyGroup({
+        widget: widgifyGroup({
           widgets: [
-            new WidgifyText({ content: 'Click me!' }),
-            new WidgifyText({
+            widgifyText({ content: 'Click me!' }),
+            widgifyText({
               content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
             })
           ]
@@ -82,13 +91,78 @@ export class HomePage {
       }),
   })
 
-  public iframe = widgifyIframe({
-    class: 'hehe',
-    src: '/'
+
+
+  public grid = widgifyIonGrid({
+    fixed: true,
+    rows: [
+      widgifyIonRow({
+        cols: [
+          widgifyIonCol({
+            // size: 'auto',
+            content: widgifyText({ content: 'col' })
+          }),
+          widgifyIonCol({
+            content: widgifyText({ content: 'col' })
+          }),
+        ]
+      }),
+      widgifyIonRow({
+        cols: [
+          widgifyIonCol({
+            content: widgifyText({ content: 'col' }),
+
+          }),
+          widgifyIonCol({
+            content: widgifyText({ content: 'col' })
+          }),
+          widgifyIonCol({
+            content: widgifyMouseEvent({
+              click: (event) => {
+                console.log(event)
+              },
+              widget: widgifyIonItem({
+                button: true,
+                color: 'dark',
+                content: widgifyText({ content: 'button' }),
+              })
+            })
+
+
+          }),
+        ]
+      }),
+      widgifyIonRow({
+        cols: [
+          widgifyIonCol({
+            class: 'ion-text-start',
+            content: widgifyText({ content: 'col' })
+          }),
+          widgifyIonCol({
+            content: widgifyText({ content: 'col' })
+          }),
+          widgifyIonCol({
+            content: widgifyGroup({
+              widgets: [
+                widgifyText({ content: 'col' }),
+                widgifyIonButton({
+                  content: [
+                    widgifyText({ content: 'button' }),
+                    widgifyIonIcon({ name: 'pencil', slot: 'start' }),
+                  ],
+                  shape: 'round',
+                  color: 'danger',
+                  expand: 'block'
+                })
+              ]
+            })
+          }),
+        ]
+      })
+    ]
   })
 
-  public widget = this.iframe;
 
-
+  public widget = this.repeater
 
 }

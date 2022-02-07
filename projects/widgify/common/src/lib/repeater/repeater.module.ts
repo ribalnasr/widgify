@@ -19,4 +19,6 @@ import { WidgifyRepeaterComponent } from './repeater.component';
 export * from './repeater.component';
 export * from './repeater.interface';
 export * from './repeater.class';
+export * from './repeater-list.class';
+export * from './repeater-row.class';
 

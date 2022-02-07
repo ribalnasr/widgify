@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { WidgifyFormSettings } from './form.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
 import { FormBuilder } from '@angular/forms';
@@ -10,9 +10,10 @@ import { map } from 'rxjs/operators';
 export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettings> {
 
 	constructor(
-		public formBuilder: FormBuilder
+		public formBuilder: FormBuilder,
+		element: ElementRef
 	) {
-		super();
+		super(element);
 	}
 
 	public widget = this.settings$.pipe(

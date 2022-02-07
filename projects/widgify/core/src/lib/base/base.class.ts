@@ -14,3 +14,5 @@ export class WidgifyBase<Settings extends WidgifySettings = WidgifySettings>  {
     }
     constructor(private _settings?: Settings) { }
 }
+
+export const widgifyBase = <Settings extends WidgifySettings = WidgifySettings>(settings: Settings) => new WidgifyBase<Settings>(settings);

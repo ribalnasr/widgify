@@ -7,3 +7,5 @@ export class WidgifyText extends WidgifyBase<WidgifyTextSettings> {
 	public defaults: WidgifyTextSettings = {};
 
 }
+
+export const widgifyText = (settings: WidgifyTextSettings) => new WidgifyText(settings);

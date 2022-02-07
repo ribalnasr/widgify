@@ -7,3 +7,5 @@ export class WidgifyIonItem extends WidgifyBase<WidgifyIonItemSettings> {
 	public defaults: WidgifyIonItemSettings = {};
 
 }
+
+export const widgifyIonItem = (settings: WidgifyIonItemSettings) => new WidgifyIonItem(settings);

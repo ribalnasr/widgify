@@ -26,3 +26,5 @@ export class WidgifyDynamic<T> extends WidgifyBase<WidgifyDynamicSettings<T>> {
 	public defaults: WidgifyDynamicSettings<T> = {};
 
 }
+
+export const widgifyDynamic = <T>(settings: WidgifyDynamicSettings<T>) => new WidgifyDynamic<T>(settings);

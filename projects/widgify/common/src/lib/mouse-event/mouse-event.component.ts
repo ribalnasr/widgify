@@ -4,9 +4,12 @@ import { WidgifyBaseComponent } from '@widgify/core';
 @Component({
 	selector: 'widgify-mouse-event',
 	templateUrl: './mouse-event.component.html',
+	host: {
+		'(click)': "settings.click ? settings.click($event) : noAction()",
+	}
 })
 export class WidgifyMouseEventComponent extends WidgifyBaseComponent<WidgifyMouseEventSettings> {
 
-	public noAction() {}
+	public noAction() { }
 
 }

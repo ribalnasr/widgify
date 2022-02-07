@@ -1,8 +1,8 @@
-<ng-container *ngIf="settings.formControl; else withValue">
+<ng-container *ngIf="formControl; else withValue">
     <ion-input [type]="settings.type" [step]="settings.step" [spellcheck]="settings.spellcheck" [size]="settings.size"
         [required]="settings.required" [readonly]="settings.readonly" [multiple]="settings.multiple"
         [name]="settings.name" [pattern]="settings.pattern" [placeholder]="settings.placeholder"
-        [formControl]="settings.formControl"></ion-input>
+        [formControl]="formControl"></ion-input>
 </ng-container>
 <ng-template #withValue>
     <ion-input [type]="settings.type" [step]="settings.step" [spellcheck]="settings.spellcheck" [size]="settings.size"

@@ -7,3 +7,5 @@ export class WidgifyIonLabel extends WidgifyBase<WidgifyIonLabelSettings> {
 	public defaults: WidgifyIonLabelSettings = {};
 
 }
+
+export const widgifyIonLabel = (settings: WidgifyIonLabelSettings) => new WidgifyIonLabel(settings);

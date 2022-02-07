@@ -7,3 +7,5 @@ export class WidgifyMouseEvent extends WidgifyBase<WidgifyMouseEventSettings> {
 	public defaults: WidgifyMouseEventSettings = {};
 
 }
+
+export const widgifyMouseEvent = (settings: WidgifyMouseEventSettings) => new WidgifyMouseEvent(settings);

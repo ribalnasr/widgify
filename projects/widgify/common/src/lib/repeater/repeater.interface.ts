@@ -1,5 +1,6 @@
 import { WidgifyBase, WidgifySettings } from '@widgify/core';
-import { WidgifyRepeaterList, WidgifyRepeaterRow } from './repeater.component';
+import { WidgifyRepeaterList } from './repeater-list.class';
+import { WidgifyRepeaterRow } from './repeater-row.class';
 
 export interface WidgifyRepeaterSettings<T> extends WidgifySettings {
 	list?: WidgifyRepeaterList<T> | T[];

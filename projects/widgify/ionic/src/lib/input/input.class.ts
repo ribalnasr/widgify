@@ -11,3 +11,5 @@ export class WidgifyIonInput extends WidgifyBase<WidgifyIonInputSettings> {
 	};
 
 }
+
+export const widgifyIonInput = (settings: WidgifyIonInputSettings) => new WidgifyIonInput(settings);

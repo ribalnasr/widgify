@@ -7,3 +7,5 @@ export class WidgifyForm extends WidgifyBase<WidgifyFormSettings> {
 	public defaults: WidgifyFormSettings = {};
 
 }
+
+export const widgifyForm = (settings: WidgifyFormSettings) => new WidgifyForm(settings);
