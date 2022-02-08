@@ -2,10 +2,10 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { widgifyBase } from '@widgify/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { widgifyGroup, widgifyDynamic, widgifyForm, widgifyText, widgifyRepeater, widgifyMouseEvent, widgifyRepeaterList } from '@widgify/common';
-import { widgifyIonButton, widgifyIonGrid, widgifyIonIcon, widgifyIonInput, widgifyIonItem, widgifyIonLabel } from '@widgify/ionic';
+import { wiIonButton, wiIonGrid, wiIonIcon, wiIonInput, wiIonItem, wiIonLabel } from '@widgify/ionic';
 import { Validators } from '@angular/forms';
-import { widgifyIonRow } from '../../../projects/widgify/ionic/src/lib/row/row.class';
-import { widgifyIonCol } from '../../../projects/widgify/ionic/src/lib/col/col.class';
+import { wiIonRow } from '../../../projects/widgify/ionic/src/lib/row/row.class';
+import { wiIonCol } from '../../../projects/widgify/ionic/src/lib/col/col.class';
 
 @Component({
   selector: 'app-home',
@@ -38,23 +38,23 @@ export class HomePage {
   //   }),
   //   content: formGroup => widgifyGroup({
   //     widgets: [
-  //       widgifyIonItem({
+  //       wiIonItem({
   //         content: [
-  //           widgifyIonLabel({ content: 'Your Name' }),
-  //           widgifyIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
+  //           wiIonLabel({ content: 'Your Name' }),
+  //           wiIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
   //         ]
   //       }),
-  //       widgifyIonItem({
+  //       wiIonItem({
   //         content: [
-  //           widgifyIonLabel({ content: 'Your surname' }),
-  //           widgifyIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
+  //           wiIonLabel({ content: 'Your surname' }),
+  //           wiIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
   //         ]
   //       }),
   //     ]
   //   })
   // })
 
-  // public ionInput = widgifyIonInput({
+  // public ionInput = wiIonInput({
   //   value: 'testtest',
   //   placeholder: 'enter value'
   // })
@@ -89,12 +89,12 @@ export class HomePage {
 
 
 
-  public grid = widgifyIonGrid({ fixed: true, }).insert(
-    widgifyIonRow().insert(
-      widgifyIonCol({ size: '3', }).insert(
+  public grid = wiIonGrid({ fixed: true, }).insert(
+    wiIonRow().insert(
+      wiIonCol({ size: '3', }).insert(
         widgifyText({ content: 'test' })
       ),
-      widgifyIonCol({ size: '3' }).insert(
+      wiIonCol({ size: '3' }).insert(
         widgifyText({ content: 'test' })
       )
     )

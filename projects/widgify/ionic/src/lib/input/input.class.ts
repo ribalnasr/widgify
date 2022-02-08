@@ -1,11 +1,11 @@
-import { WidgifyIonInputSettings } from './input.interface';
-import { WidgifyIonInputComponent } from './input.component';
-import { WidgifyIonBase } from '../base/base.class';
+import { WiIonInputSettings } from './input.interface';
+import { WiIonInputComponent } from './input.component';
+import { WiIonBase } from '../base/base.class';
 import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonInput extends WidgifyIonBase<WidgifyIonInputSettings> {
-	public component = WidgifyIonInputComponent;
-	public defaults: WidgifyIonInputSettings = {
+export class WiIonInput extends WiIonBase<WiIonInputSettings> {
+	public component = WiIonInputComponent;
+	public defaults: WiIonInputSettings = {
 		type: 'text',
 		readonly: false,
 		required: false
@@ -13,4 +13,4 @@ export class WidgifyIonInput extends WidgifyIonBase<WidgifyIonInputSettings> {
 
 }
 
-export const widgifyIonInput = (settings?: WidgifyIonInputSettings) => widgifyFn<WidgifyIonInputSettings, WidgifyIonInput>(WidgifyIonInput)(settings);
+export const wiIonInput = (settings?: WiIonInputSettings) => widgifyFn<WiIonInputSettings, WiIonInput>(WiIonInput)(settings);

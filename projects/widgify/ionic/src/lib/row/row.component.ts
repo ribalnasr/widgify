@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { WidgifyIonRowSettings } from './row.interface';
-import { WidgifyIonBaseComponent } from '../base/base.component';
+import { WiIonRowSettings } from './row.interface';
+import { WiIonBaseComponent } from '../base/base.component';
 
 @Component({
 	selector: 'ion-row',
 	templateUrl: './row.component.html',
 })
-export class WidgifyIonRowComponent extends WidgifyIonBaseComponent<WidgifyIonRowSettings> {
+export class WiIonRowComponent extends WiIonBaseComponent<WiIonRowSettings> {
 
 
 }

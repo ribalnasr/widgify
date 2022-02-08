@@ -1,18 +1,18 @@
-import { WidgifyIonButtonSettings } from './button.interface';
-import { WidgifyIonButtonComponent } from './button.component';
-import { WidgifyIonBase } from '../base/base.class';
+import { WiIonButtonSettings } from './button.interface';
+import { WiIonButtonComponent } from './button.component';
+import { WiIonBase } from '../base/base.class';
 import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonButton extends WidgifyIonBase<WidgifyIonButtonSettings> {
-	public component = WidgifyIonButtonComponent;
+export class WiIonButton extends WiIonBase<WiIonButtonSettings> {
+	public component = WiIonButtonComponent;
 
 	/**
 	 * The default settings for IonButton.
 	 */
-	public defaults: WidgifyIonButtonSettings = {
+	public defaults: WiIonButtonSettings = {
 
 	};
 
 }
 
-export const widgifyIonButton = (settings?: WidgifyIonButtonSettings) => widgifyFn<WidgifyIonButtonSettings, WidgifyIonButton>(WidgifyIonButton)(settings);
+export const wiIonButton = (settings?: WiIonButtonSettings) => widgifyFn<WiIonButtonSettings, WiIonButton>(WiIonButton)(settings);

@@ -1,22 +1,22 @@
 import { NgModule } from "@angular/core";
-import { WidgifyIonInputModule } from "./input/input.module";
-import { WidgifyIonGridModule } from "./grid/grid.module";
-import { WidgifyIonItemModule } from "./item/item.module";
-import { WidgifyIonLabelModule } from "./label/label.module";
-import { WidgifyIonRowModule } from "./row/row.module";
-import { WidgifyIonColModule } from "./col/col.module";
-import { WidgifyIonButtonModule } from "./button/button.module";
-import { WidgifyIonIconModule } from "./icon/icon.module";
+import { WiIonInputModule } from "./input/input.module";
+import { WiIonGridModule } from "./grid/grid.module";
+import { WiIonItemModule } from "./item/item.module";
+import { WiIonLabelModule } from "./label/label.module";
+import { WiIonRowModule } from "./row/row.module";
+import { WiIonColModule } from "./col/col.module";
+import { WiIonButtonModule } from "./button/button.module";
+import { WiIonIconModule } from "./icon/icon.module";
 
 const modules = [
-    WidgifyIonInputModule,
-    WidgifyIonItemModule,
-    WidgifyIonLabelModule,
-    WidgifyIonGridModule,
-    WidgifyIonRowModule,
-    WidgifyIonColModule,
-    WidgifyIonButtonModule,
-    WidgifyIonIconModule
+    WiIonInputModule,
+    WiIonItemModule,
+    WiIonLabelModule,
+    WiIonGridModule,
+    WiIonRowModule,
+    WiIonColModule,
+    WiIonButtonModule,
+    WiIonIconModule
 ]
 
 @NgModule({
@@ -26,5 +26,5 @@ const modules = [
     imports: [
         ...modules
     ]
-}) export class WidgifyIonicModule { }
+}) export class WiIonicModule { }
 

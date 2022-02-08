@@ -25,6 +25,8 @@ export class WidgifyDynamic<T = any> extends WidgifyBase<WidgifyDynamicSettings<
 	public component: Type<WidgifyDynamicComponent<T>> = WidgifyDynamicComponent;
 	public defaults: WidgifyDynamicSettings<T> = {};
 
+
+
 }
 
 // export const widgifyDynamic = widgifyFn<WidgifyDynamicSettings>(WidgifyDynamic);

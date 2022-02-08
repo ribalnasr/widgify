@@ -1,6 +1,6 @@
 import { WidgifyBase, WidgifySettings } from '@widgify/core';
 
-export interface WidgifyIonBaseSettings extends WidgifySettings {
+export interface WiIonBaseSettings extends WidgifySettings {
 
 	slot?: string;
 

@@ -1,12 +1,12 @@
-import { WidgifyIonItemSettings } from './item.interface';
-import { WidgifyIonItemComponent } from './item.component';
-import { WidgifyIonBase } from '../base/base.class';
+import { WiIonItemSettings } from './item.interface';
+import { WiIonItemComponent } from './item.component';
+import { WiIonBase } from '../base/base.class';
 import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonItem extends WidgifyIonBase<WidgifyIonItemSettings> {
-	public component = WidgifyIonItemComponent;
-	public defaults: WidgifyIonItemSettings = {};
+export class WiIonItem extends WiIonBase<WiIonItemSettings> {
+	public component = WiIonItemComponent;
+	public defaults: WiIonItemSettings = {};
 
 }
 
-export const widgifyIonItem = (settings?: WidgifyIonItemSettings) => widgifyFn<WidgifyIonItemSettings, WidgifyIonItem>(WidgifyIonItem)(settings);
+export const wiIonItem = (settings?: WiIonItemSettings) => widgifyFn<WiIonItemSettings, WiIonItem>(WiIonItem)(settings);

@@ -1,6 +1,6 @@
 import { Components } from '@ionic/core';
-import { WidgifyIonBaseSettings } from '../base/base.interface';
+import { WiIonBaseSettings } from '../base/base.interface';
 
-export interface WidgifyIonItemSettings extends Partial<Components.IonItem>, WidgifyIonBaseSettings {
+export interface WiIonItemSettings extends Partial<Components.IonItem>, WiIonBaseSettings {
 
 }

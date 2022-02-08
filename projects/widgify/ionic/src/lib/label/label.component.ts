@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { WidgifyIonLabelSettings } from './label.interface';
-import { WidgifyIonBaseComponent } from '../base/base.component';
+import { WiIonLabelSettings } from './label.interface';
+import { WiIonBaseComponent } from '../base/base.component';
 @Component({
 	selector: 'ion-label',
 	templateUrl: './label.component.html',
 })
-export class WidgifyIonLabelComponent extends WidgifyIonBaseComponent<WidgifyIonLabelSettings> {
+export class WiIonLabelComponent extends WiIonBaseComponent<WiIonLabelSettings> {
 
 
 }

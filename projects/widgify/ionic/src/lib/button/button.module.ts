@@ -1,21 +1,21 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { WidgifyModule } from "@widgify/core";
-import { WidgifyIonButtonComponent } from './button.component';
+import { WiIonButtonComponent } from './button.component';
 
 @NgModule({
     declarations: [
-        WidgifyIonButtonComponent
+        WiIonButtonComponent
     ],
     exports: [
-        WidgifyIonButtonComponent
+        WiIonButtonComponent
     ],
     imports: [
         CommonModule,
         WidgifyModule,
         // Import here any module that is used by the ion-button.
     ]
-}) export class WidgifyIonButtonModule { }
+}) export class WiIonButtonModule { }
 
 export * from './button.component';
 export * from './button.interface';

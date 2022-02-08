@@ -1,5 +1,5 @@
-import { WidgifyIonBaseSettings } from '../base/base.interface';
+import { WiIonBaseSettings } from '../base/base.interface';
 
-export interface WidgifyIonLabelSettings extends WidgifyIonBaseSettings {
+export interface WiIonLabelSettings extends WiIonBaseSettings {
 	content?: string;
 }

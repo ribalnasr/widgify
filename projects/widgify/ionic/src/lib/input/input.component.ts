@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { WidgifyIonInputSettings } from './input.interface';
+import { WiIonInputSettings } from './input.interface';
 import { FormControl } from '@angular/forms';
-import { WidgifyIonBaseComponent } from '../base/base.component';
+import { WiIonBaseComponent } from '../base/base.component';
 @Component({
 	selector: 'widgify-ion-input',
 	templateUrl: './input.component.html',
 })
-export class WidgifyIonInputComponent extends WidgifyIonBaseComponent<WidgifyIonInputSettings> {
+export class WiIonInputComponent extends WiIonBaseComponent<WiIonInputSettings> {
 
 	public get formControl() {
 		return this.settings.formControl as FormControl

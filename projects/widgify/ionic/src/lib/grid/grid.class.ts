@@ -1,16 +1,16 @@
-import { WidgifyIonGridSettings } from './grid.interface';
-import { WidgifyIonGridComponent } from './grid.component';
-import { WidgifyIonBase } from '../base/base.class';
+import { WiIonGridSettings } from './grid.interface';
+import { WiIonGridComponent } from './grid.component';
+import { WiIonBase } from '../base/base.class';
 import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonGrid extends WidgifyIonBase<WidgifyIonGridSettings> {
-	public component = WidgifyIonGridComponent;
+export class WiIonGrid extends WiIonBase<WiIonGridSettings> {
+	public component = WiIonGridComponent;
 
 	/**
 	 * The default settings for IonGrid.
 	 */
-	public defaults: WidgifyIonGridSettings = {};
+	public defaults: WiIonGridSettings = {};
 
 }
 
-export const widgifyIonGrid = (settings?: WidgifyIonGridSettings) => widgifyFn<WidgifyIonGridSettings, WidgifyIonGrid>(WidgifyIonGrid)(settings);
+export const wiIonGrid = (settings?: WiIonGridSettings) => widgifyFn<WiIonGridSettings, WiIonGrid>(WiIonGrid)(settings);

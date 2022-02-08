@@ -1,21 +1,21 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { WidgifyModule } from "@widgify/core";
-import { WidgifyIonIconComponent } from './icon.component';
+import { WiIonIconComponent } from './icon.component';
 
 @NgModule({
     declarations: [
-        WidgifyIonIconComponent
+        WiIonIconComponent
     ],
     exports: [
-        WidgifyIonIconComponent
+        WiIonIconComponent
     ],
     imports: [
         CommonModule,
         WidgifyModule,
         // Import here any module that is used by the ion-icon.
     ]
-}) export class WidgifyIonIconModule { }
+}) export class WiIonIconModule { }
 
 export * from './icon.component';
 export * from './icon.interface';

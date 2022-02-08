@@ -1,12 +1,12 @@
 import { Component, ElementRef } from '@angular/core';
-import { WidgifyIonBaseSettings } from './base.interface';
+import { WiIonBaseSettings } from './base.interface';
 import { WidgifyBase, WidgifyBaseComponent } from '@widgify/core';
 
 @Component({
 	selector: 'ion-base',
 	template: '',
 })
-export class WidgifyIonBaseComponent<Settings extends WidgifyIonBaseSettings = WidgifyIonBaseSettings> extends WidgifyBaseComponent<Settings> {
+export class WiIonBaseComponent<Settings extends WiIonBaseSettings = WiIonBaseSettings> extends WidgifyBaseComponent<Settings> {
 
 	constructor(
 		private _element: ElementRef

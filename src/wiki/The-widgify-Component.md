@@ -33,7 +33,7 @@ A form with an input and button using the @widgify/ionic library:
   // page.component.ts
 
   import { WidgifyForm, WidgifyGroup } from '@widgify/common';
-  import { WidgifyIonItem, WidgifyIonLabel, WidgifyIonInput, WidgifyIonButton } from '@widgify/ionic';
+  import { WiIonItem, WiIonLabel, WiIonInput, WiIonButton } from '@widgify/ionic';
   // ...
   public customWidget = new WidgifyForm({
     formGroup: formBuilder => formBuilder.group({
@@ -41,16 +41,16 @@ A form with an input and button using the @widgify/ionic library:
     }),
     content: formGroup => new WidgifyGroup({
       widgets: [
-        new WidgifyIonItem({
+        new WiIonItem({
           content: [
-            new WidgifyIonLabel({ content: 'Your Name' }),
-            new WidgifyIonInput({
+            new WiIonLabel({ content: 'Your Name' }),
+            new WiIonInput({
               formControl: formGroup.controls.name,
               placeholder: 'Please enter your name.'
             })
           ]
         }),
-        new WidgifyIonButton({
+        new WiIonButton({
           content: 'Submit',
           action: () => {
             console.log(formGroup.value)l

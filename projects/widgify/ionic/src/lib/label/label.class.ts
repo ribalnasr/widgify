@@ -1,12 +1,12 @@
-import { WidgifyIonLabelSettings } from './label.interface';
-import { WidgifyIonLabelComponent } from './label.component';
-import { WidgifyIonBase } from '../base/base.class';
+import { WiIonLabelSettings } from './label.interface';
+import { WiIonLabelComponent } from './label.component';
+import { WiIonBase } from '../base/base.class';
 import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonLabel extends WidgifyIonBase<WidgifyIonLabelSettings> {
-	public component = WidgifyIonLabelComponent;
-	public defaults: WidgifyIonLabelSettings = {};
+export class WiIonLabel extends WiIonBase<WiIonLabelSettings> {
+	public component = WiIonLabelComponent;
+	public defaults: WiIonLabelSettings = {};
 
 }
 
-export const widgifyIonLabel = (settings?: WidgifyIonLabelSettings) => widgifyFn<WidgifyIonLabelSettings, WidgifyIonLabel>(WidgifyIonLabel)(settings);
+export const wiIonLabel = (settings?: WiIonLabelSettings) => widgifyFn<WiIonLabelSettings, WiIonLabel>(WiIonLabel)(settings);

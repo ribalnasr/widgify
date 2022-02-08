@@ -3,14 +3,14 @@ import { NgModule } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 import { WidgifyModule } from "@widgify/core";
 import { WidgifyTextModule } from "@widgify/common";
-import { WidgifyIonLabelComponent } from './label.component';
+import { WiIonLabelComponent } from './label.component';
 
 @NgModule({
     declarations: [
-        WidgifyIonLabelComponent
+        WiIonLabelComponent
     ],
     exports: [
-        WidgifyIonLabelComponent
+        WiIonLabelComponent
     ],
     imports: [
         CommonModule,
@@ -18,7 +18,7 @@ import { WidgifyIonLabelComponent } from './label.component';
         WidgifyModule,
         WidgifyTextModule
     ]
-}) export class WidgifyIonLabelModule { }
+}) export class WiIonLabelModule { }
 
 export * from './label.component';
 export * from './label.interface';

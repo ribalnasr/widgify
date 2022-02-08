@@ -2,21 +2,21 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 import { WidgifyModule } from "@widgify/core";
-import { WidgifyIonItemComponent } from './item.component';
+import { WiIonItemComponent } from './item.component';
 
 @NgModule({
     declarations: [
-        WidgifyIonItemComponent
+        WiIonItemComponent
     ],
     exports: [
-        WidgifyIonItemComponent
+        WiIonItemComponent
     ],
     imports: [
         CommonModule,
         IonicModule,
         WidgifyModule,
     ]
-}) export class WidgifyIonItemModule { }
+}) export class WiIonItemModule { }
 
 export * from './item.component';
 export * from './item.interface';

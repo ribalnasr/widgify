@@ -1,16 +1,16 @@
-import { WidgifyIonIconSettings } from './icon.interface';
-import { WidgifyIonIconComponent } from './icon.component';
-import { WidgifyIonBase } from '../base/base.class';
+import { WiIonIconSettings } from './icon.interface';
+import { WiIonIconComponent } from './icon.component';
+import { WiIonBase } from '../base/base.class';
 import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonIcon extends WidgifyIonBase<WidgifyIonIconSettings> {
-	public component = WidgifyIonIconComponent;
+export class WiIonIcon extends WiIonBase<WiIonIconSettings> {
+	public component = WiIonIconComponent;
 
 	/**
 	 * The default settings for IonIcon.
 	 */
-	public defaults: WidgifyIonIconSettings = {};
+	public defaults: WiIonIconSettings = {};
 
 }
 
-export const widgifyIonIcon = (settings?: WidgifyIonIconSettings) => widgifyFn<WidgifyIonIconSettings, WidgifyIonIcon>(WidgifyIonIcon)(settings);
+export const wiIonIcon = (settings?: WiIonIconSettings) => widgifyFn<WiIonIconSettings, WiIonIcon>(WiIonIcon)(settings);

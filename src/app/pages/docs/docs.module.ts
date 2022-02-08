@@ -13,7 +13,7 @@ import { IntroductionPage } from './introduction/introduction.page';
 import { UsagePage } from './usage/usage.page';
 import { WidgifyModule } from '@widgify/core';
 import { WidgifyCommonModule } from '@widgify/common';
-import { WidgifyIonicModule } from '@widgify/ionic';
+import { WiIonicModule } from '@widgify/ionic';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { WidgifyIonicModule } from '@widgify/ionic';
     SidemenuModule,
     WidgifyModule,
     WidgifyCommonModule,
-    WidgifyIonicModule
+    WiIonicModule
   ],
   declarations: [
     DocsPage,
