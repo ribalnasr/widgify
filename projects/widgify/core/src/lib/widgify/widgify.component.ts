@@ -11,7 +11,7 @@ export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 
 	public componentRef: ComponentRef<any>;
 
-	@Input('widget')
+	@Input('widgify')
 	public set widget(widget: WidgetType) {
 		this.addDynamicComponent(widget);
 	}
@@ -35,6 +35,7 @@ export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 
 		// Should continue here only if settings have changed. !!!
 		this.componentRef.instance.settings = widget.settings;
+		this.componentRef.instance.content = widget.content;
 
 	}
 
@@ -42,7 +43,7 @@ export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 
 @Component({
 	selector: 'widgify',
-	template: '<ng-template widgify [widget]="widget"></ng-template>	',
+	template: '<ng-template [widgify]="widget"></ng-template>	',
 })
 export class WidgifyComponent<WidgetType extends WidgifyBase = WidgifyBase> {
 

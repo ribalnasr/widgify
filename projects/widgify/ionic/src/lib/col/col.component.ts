@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { WidgifyIonColSettings } from './col.interface';
-import { WidgifyBaseComponent } from '@widgify/core';
+import { WidgifyIonBaseComponent } from '../base/base.component';
 
 @Component({
 	selector: 'ion-col',
 	templateUrl: './col.component.html',
 })
-export class WidgifyIonColComponent extends WidgifyBaseComponent<WidgifyIonColSettings> {
+export class WidgifyIonColComponent extends WidgifyIonBaseComponent<WidgifyIonColSettings> {
 
 }

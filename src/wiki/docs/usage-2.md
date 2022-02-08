@@ -3,7 +3,7 @@
 ...or a slightly more complex example:
 _component.html_
 ```html
-<widgify [widget]="clickMe"></widgify>
+<widgify [widgify]="clickMe"></widgify>
 ```
 _component.ts_
 ```ts

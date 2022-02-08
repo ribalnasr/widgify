@@ -1,8 +1,7 @@
 import { Components } from '@ionic/core';
-import { WidgifySettings } from '@widgify/core';
+import { WidgifyIonBaseSettings } from '../base/base.interface';
 
-export interface WidgifyIonIconSettings extends Partial<Components.IonIcon>, WidgifySettings {
+export interface WidgifyIonIconSettings extends Partial<Components.IonIcon>, WidgifyIonBaseSettings {
 
-	slot?: string;
 
 }

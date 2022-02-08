@@ -1,3 +1,1 @@
-<ion-label>
-    <ng-template widgify *ngIf="widget" [widget]="widget"></ng-template>
-</ion-label>
+<ng-template *ngFor="let widget of content" [widgify]="widget"></ng-template>

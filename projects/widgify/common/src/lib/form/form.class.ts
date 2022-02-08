@@ -1,4 +1,4 @@
-import { WidgifyBase } from '@widgify/core';
+import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifyFormSettings } from './form.interface';
 import { WidgifyFormComponent } from './form.component';
 
@@ -8,4 +8,5 @@ export class WidgifyForm extends WidgifyBase<WidgifyFormSettings> {
 
 }
 
-export const widgifyForm = (settings: WidgifyFormSettings) => new WidgifyForm(settings);
+
+export const widgifyForm = widgifyFn<WidgifyFormSettings, WidgifyForm>(WidgifyForm);

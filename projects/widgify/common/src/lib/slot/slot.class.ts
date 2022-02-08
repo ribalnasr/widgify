@@ -1,4 +1,4 @@
-import { WidgifyBase } from '@widgify/core';
+import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifySlotSettings } from './slot.interface';
 import { WidgifySlotComponent } from './slot.component';
 
@@ -12,4 +12,4 @@ export class WidgifySlot extends WidgifyBase<WidgifySlotSettings> {
 
 }
 
-export const widgifySlot = (settings: WidgifySlotSettings) => new WidgifySlot(settings);
+export const widgifySlot = (settings?: WidgifySlotSettings) => widgifyFn<WidgifySlotSettings, WidgifySlot>(WidgifySlot)(settings);

@@ -6,7 +6,7 @@
 
 _component.html_
 ```html
-<widgify [widget]="helloWidgify"></widgify>
+<widgify [widgify]="helloWidgify"></widgify>
 ```
 _component.ts_
 ```ts
@@ -58,7 +58,7 @@ npm i -s @widgify/core @widgify/common
 [__@widgify/core__](https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library) is the core library that makes everything possible.
 It consists mainly of 2 elements:
 - The base for every other widget created or to be created.
-- The <widgify> component that takes a [widget] input.
+- The <widgify> component that takes a [widgify] input.
 
 _more at https://github.com/ribalnasr/widgify/wiki/Widgify-Core-Library_
 

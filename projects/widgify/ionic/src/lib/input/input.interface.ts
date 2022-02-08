@@ -1,8 +1,8 @@
 import { AbstractControl } from '@angular/forms';
 import { IonInput } from '@ionic/angular';
-import { WidgifySettings } from '@widgify/core';
+import { WidgifyIonBaseSettings } from '../base/base.interface';
 
-export interface WidgifyIonInputSettings extends Partial<IonInput>, WidgifySettings {
+export interface WidgifyIonInputSettings extends Partial<IonInput>, WidgifyIonBaseSettings {
 
 	formControl?: AbstractControl;
 

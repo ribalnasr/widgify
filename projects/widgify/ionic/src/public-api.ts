@@ -5,6 +5,8 @@
 
 export * from './lib/ionic.module';
 
+export * from './lib/base/base.module';
+
 export * from './lib/input/input.module';
 export * from './lib/item/item.module';
 export * from './lib/label/label.module';

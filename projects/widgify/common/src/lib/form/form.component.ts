@@ -11,9 +11,8 @@ export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettin
 
 	constructor(
 		public formBuilder: FormBuilder,
-		element: ElementRef
 	) {
-		super(element);
+		super();
 	}
 
 	public widget = this.settings$.pipe(

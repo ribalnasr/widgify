@@ -1,8 +1,9 @@
-import { WidgifyBase } from '@widgify/core';
 import { WidgifyIonRowSettings } from './row.interface';
 import { WidgifyIonRowComponent } from './row.component';
+import { WidgifyIonBase } from '../base/base.class';
+import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonRow extends WidgifyBase<WidgifyIonRowSettings> {
+export class WidgifyIonRow extends WidgifyIonBase<WidgifyIonRowSettings> {
 	public component = WidgifyIonRowComponent;
 
 	/**
@@ -12,4 +13,4 @@ export class WidgifyIonRow extends WidgifyBase<WidgifyIonRowSettings> {
 
 }
 
-export const widgifyIonRow = (settings: WidgifyIonRowSettings) => new WidgifyIonRow(settings);
+export const widgifyIonRow = (settings?: WidgifyIonRowSettings) => widgifyFn<WidgifyIonRowSettings, WidgifyIonRow>(WidgifyIonRow)(settings);

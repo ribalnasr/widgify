@@ -15,154 +15,92 @@ import { widgifyIonCol } from '../../../projects/widgify/ionic/src/lib/col/col.c
 export class HomePage {
 
 
-  public base = widgifyBase({
-    class: 'base'
-  })
+  // public base = widgifyBase({
+  //   class: 'base'
+  // })
 
-  public text = widgifyText({
-    content: 'text goes here'
-  })
+  // public text = widgifyText({
+  //   content: 'text goes here'
+  // })
 
-  public dynamic = widgifyDynamic({
-    class: 'dynamic',
-    data: of('dynamicData'),
-    widget: data => widgifyBase({
-      class: data
-    })
-  })
+  // public dynamic = widgifyDynamic({
+  //   class: 'dynamic',
+  //   data: of('dynamicData'),
+  //   widget: data => widgifyBase({
+  //     class: data
+  //   })
+  // })
 
-  public form = widgifyForm({
-    formGroup: formBuilder => formBuilder.group({
-      name: ['', Validators.required],
-      surname: ['nasr', Validators.required],
-    }),
-    content: formGroup => widgifyGroup({
-      widgets: [
-        widgifyIonItem({
-          content: [
-            widgifyIonLabel({ content: 'Your Name' }),
-            widgifyIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
-          ]
-        }),
-        widgifyIonItem({
-          content: [
-            widgifyIonLabel({ content: 'Your surname' }),
-            widgifyIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
-          ]
-        }),
-      ]
-    })
-  })
+  // public form = widgifyForm({
+  //   formGroup: formBuilder => formBuilder.group({
+  //     name: ['', Validators.required],
+  //     surname: ['nasr', Validators.required],
+  //   }),
+  //   content: formGroup => widgifyGroup({
+  //     widgets: [
+  //       widgifyIonItem({
+  //         content: [
+  //           widgifyIonLabel({ content: 'Your Name' }),
+  //           widgifyIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
+  //         ]
+  //       }),
+  //       widgifyIonItem({
+  //         content: [
+  //           widgifyIonLabel({ content: 'Your surname' }),
+  //           widgifyIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
+  //         ]
+  //       }),
+  //     ]
+  //   })
+  // })
 
-  public ionInput = widgifyIonInput({
-    value: 'testtest',
-    placeholder: 'enter value'
-  })
+  // public ionInput = widgifyIonInput({
+  //   value: 'testtest',
+  //   placeholder: 'enter value'
+  // })
 
-  private repeaterList = widgifyRepeaterList([2, 4, 6, 8]);
-  public repeater = widgifyRepeater({
-    list: this.repeaterList,
-    widget: row => widgifyMouseEvent({
-      click: () => {
-        console.log(row)
-        return row.update(7);
-      },
-      widget: widgifyText({ content: row.data })
-    })
-  })
+  // private repeaterList = widgifyRepeaterList([2, 4, 6, 8]);
+  // public repeater = widgifyRepeater({
+  //   list: this.repeaterList,
+  //   widget: row => widgifyMouseEvent({
+  //     click: () => {
+  //       console.log(row)
+  //       return row.update(7);
+  //     },
+  //     widget: widgifyText({ content: row.data })
+  //   })
+  // })
 
   private clickCount = new BehaviorSubject<number>(0);
   public dynamicWidget = widgifyDynamic({
-    class: 'dynamic',
     data: this.clickCount,
     widget: count =>
       widgifyMouseEvent({
         click: () => {
           this.clickCount.next(count + 1)
-        },
-        widget: widgifyGroup({
-          widgets: [
-            widgifyText({ content: 'Click me!' }),
-            widgifyText({
-              content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
-            })
-          ]
+        }
+      }).insert(
+        widgifyText({ content: 'Click me!' }),
+        widgifyText({
+          content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
         })
-      }),
+      ),
   })
 
 
 
-  public grid = widgifyIonGrid({
-    fixed: true,
-    rows: [
-      widgifyIonRow({
-        cols: [
-          widgifyIonCol({
-            // size: 'auto',
-            content: widgifyText({ content: 'col' })
-          }),
-          widgifyIonCol({
-            content: widgifyText({ content: 'col' })
-          }),
-        ]
-      }),
-      widgifyIonRow({
-        cols: [
-          widgifyIonCol({
-            content: widgifyText({ content: 'col' }),
-
-          }),
-          widgifyIonCol({
-            content: widgifyText({ content: 'col' })
-          }),
-          widgifyIonCol({
-            content: widgifyMouseEvent({
-              click: (event) => {
-                console.log(event)
-              },
-              widget: widgifyIonItem({
-                button: true,
-                color: 'dark',
-                content: widgifyText({ content: 'button' }),
-              })
-            })
+  public grid = widgifyIonGrid({ fixed: true, }).insert(
+    widgifyIonRow().insert(
+      widgifyIonCol({ size: '3', }).insert(
+        widgifyText({ content: 'test' })
+      ),
+      widgifyIonCol({ size: '3' }).insert(
+        widgifyText({ content: 'test' })
+      )
+    )
+  )
 
 
-          }),
-        ]
-      }),
-      widgifyIonRow({
-        cols: [
-          widgifyIonCol({
-            class: 'ion-text-start',
-            content: widgifyText({ content: 'col' })
-          }),
-          widgifyIonCol({
-            content: widgifyText({ content: 'col' })
-          }),
-          widgifyIonCol({
-            content: widgifyGroup({
-              widgets: [
-                widgifyText({ content: 'col' }),
-                widgifyIonButton({
-                  content: [
-                    widgifyText({ content: 'button' }),
-                    widgifyIonIcon({ name: 'pencil', slot: 'start' }),
-                  ],
-                  shape: 'round',
-                  color: 'danger',
-                  expand: 'block'
-                })
-              ]
-            })
-          }),
-        ]
-      })
-    ]
-  })
-
-
-  public widget = this.repeater
+  public widget = this.dynamicWidget
 
 }

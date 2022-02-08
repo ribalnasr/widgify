@@ -8,29 +8,29 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UsagePage {
 
-  public helloWidgify = new WidgifyText({
-    content: 'Hello Widgify!'
-  })
+  // public helloWidgify = new WidgifyText({
+  //   content: 'Hello Widgify!'
+  // })
 
-  private clickCount = new BehaviorSubject<number>(0);
-  public clickMe = new WidgifyDynamic({
-    class: 'dynamic',
-    data: this.clickCount,
-    widget: count =>
-      new WidgifyMouseEvent({
-        click: () => {
-          this.clickCount.next(count + 1)
-        },
-        widget: new WidgifyGroup({
-          widgets: [
-            new WidgifyText({ content: 'Click me!' }),
-            new WidgifyText({
-              content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
-            })
-          ]
-        })
-      }),
-  })
+  // private clickCount = new BehaviorSubject<number>(0);
+  // public clickMe = new WidgifyDynamic({
+  //   class: 'dynamic',
+  //   data: this.clickCount,
+  //   widget: count =>
+  //     new WidgifyMouseEvent({
+  //       click: () => {
+  //         this.clickCount.next(count + 1)
+  //       },
+  //       widget: new WidgifyGroup({
+  //         widgets: [
+  //           new WidgifyText({ content: 'Click me!' }),
+  //           new WidgifyText({
+  //             content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
+  //           })
+  //         ]
+  //       })
+  //     }),
+  // })
 
 
 }

@@ -18,9 +18,8 @@ export class WidgifyIframeComponent extends WidgifyBaseComponent<WidgifyIframeSe
 
 	constructor(
 		private sanitizer: DomSanitizer,
-		private element: ElementRef
 	) {
-		super(element)
+		super()
 	}
 
 }

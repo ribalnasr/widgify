@@ -1,5 +1,5 @@
-import { WidgifyBase, WidgifySettings } from '@widgify/core';
+import { WidgifyIonBaseSettings } from '../base/base.interface';
 
-export interface WidgifyIonLabelSettings extends WidgifySettings {
-	content?: WidgifyBase | string;
+export interface WidgifyIonLabelSettings extends WidgifyIonBaseSettings {
+	content?: string;
 }

@@ -2,7 +2,7 @@
 
 _component.html_
 ```html
-<widgify [widget]="helloWidgify"></widgify>
+<widgify [widgify]="helloWidgify"></widgify>
 ```
 _component.ts_
 ```ts

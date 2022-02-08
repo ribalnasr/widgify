@@ -1,4 +1,4 @@
-import { WidgifyBase } from '@widgify/core';
+import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifyIframeSettings } from './iframe.interface';
 import { WidgifyIframeComponent } from './iframe.component';
 
@@ -12,4 +12,4 @@ export class WidgifyIframe extends WidgifyBase<WidgifyIframeSettings> {
 
 }
 
-export const widgifyIframe = (settings: WidgifyIframeSettings) => new WidgifyIframe(settings);
+export const widgifyIframe = widgifyFn<WidgifyIframeSettings, WidgifyIframe>(WidgifyIframe);

@@ -1,6 +1,7 @@
 import { Input, Component, ElementRef, ViewRef, ViewContainerRef, ComponentRef } from '@angular/core';
 import { WidgifySettings } from './base.interface';
 import { ReplaySubject } from 'rxjs';
+import { WidgifyBase } from './base.class';
 
 @Component({
 	selector: 'widgify-base',
@@ -21,7 +22,6 @@ export class WidgifyBaseComponent<Settings extends WidgifySettings> {
 	public set settings(value) {
 		this._previousSettings = this._settings;
 		this._settings = { ...value };
-		this.applyAttributes();
 		this.onSettingsChange(this._settings, this._previousSettings);
 		this.settings$.next({
 			current: this._settings,
@@ -38,22 +38,15 @@ export class WidgifyBaseComponent<Settings extends WidgifySettings> {
 		return this._previousSettings;
 	};
 
+	public _content: WidgifyBase[];
+	public get content() {
+		return this._content || [];
+	};
+	public set content(value) {
+		this._content = value;
+	};
 
-	constructor(
-		private _element: ElementRef<HTMLElement>
-	) { }
 
-	applyAttributes() {
-		for (const key in this.settings) {
-			if (Object.prototype.hasOwnProperty.call(this.settings, key)) {
-				const element = this.settings[key];
-				// if (typeof element === 'string') {
-				this._element.nativeElement.setAttribute(key, element as any)
-				// }
-
-			}
-		}
-	}
 
 }
 

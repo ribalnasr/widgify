@@ -1,7 +1,7 @@
 import { WidgifyBase, WidgifySettings } from '@widgify/core';
 import { Observable } from 'rxjs';
 
-export interface WidgifyDynamicSettings<T, Widget extends WidgifyBase = WidgifyBase> extends WidgifySettings {
+export interface WidgifyDynamicSettings<T = any> extends WidgifySettings {
 	/**
 	 * Data can be:
 	 * - A static string, number, array, object... or any js type.
@@ -13,5 +13,5 @@ export interface WidgifyDynamicSettings<T, Widget extends WidgifyBase = WidgifyB
 	/**
 	 * You can use the suplied data to update the widget type and properties
 	 */
-	widget?: Widget | ((data: T) => Widget);
+	widget?: WidgifyBase | ((data: T) => WidgifyBase);
 }

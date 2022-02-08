@@ -1,7 +1,6 @@
 import { Components } from '@ionic/core';
-import { WidgifyBase, WidgifySettings } from '@widgify/core';
+import { WidgifyIonBaseSettings } from '../base/base.interface';
 
-export interface WidgifyIonRowSettings extends Components.IonRow, WidgifySettings {
-	cols?: WidgifyBase[];
+export interface WidgifyIonRowSettings extends Components.IonRow, WidgifyIonBaseSettings {
 
 }

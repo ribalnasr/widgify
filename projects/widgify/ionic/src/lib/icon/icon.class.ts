@@ -1,8 +1,9 @@
-import { WidgifyBase } from '@widgify/core';
 import { WidgifyIonIconSettings } from './icon.interface';
 import { WidgifyIonIconComponent } from './icon.component';
+import { WidgifyIonBase } from '../base/base.class';
+import { widgifyFn } from '../../../../core/src/public-api';
 
-export class WidgifyIonIcon extends WidgifyBase<WidgifyIonIconSettings> {
+export class WidgifyIonIcon extends WidgifyIonBase<WidgifyIonIconSettings> {
 	public component = WidgifyIonIconComponent;
 
 	/**
@@ -12,4 +13,4 @@ export class WidgifyIonIcon extends WidgifyBase<WidgifyIonIconSettings> {
 
 }
 
-export const widgifyIonIcon = (settings: WidgifyIonIconSettings) => new WidgifyIonIcon(settings);
+export const widgifyIonIcon = (settings?: WidgifyIonIconSettings) => widgifyFn<WidgifyIonIconSettings, WidgifyIonIcon>(WidgifyIonIcon)(settings);

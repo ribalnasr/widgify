@@ -1,7 +1,7 @@
 **@widgify/core** is the core library that make everything possible.
 It consists mainly on 2 elements:
 
-#### - The \<widgify> component that takes a [widget] input:
+#### - The \<widgify> component that takes a [widgify] input:
 
 This is where your widgets are loaded to the UI. [Learn more](https://github.com/ribalnasr/widgify/wiki/The-widgify-Component)
 

@@ -1,14 +1,14 @@
 Unless you're creating your own widget from scratch, the **\<widgify>** component is the only html you will have to write.
 
-The \<widgify> component takes 1 input called **\[widget]** and this is where you will load all the logic in your component's TS file.
+The \<widgify> component takes 1 input called **\[widgify]** and this is where you will load all the logic in your component's TS file.
 
 ```html
 <!-- page.component.html -->
 
-<widgify [widget]="customWidget"></widgify>
+<widgify [widgify]="customWidget"></widgify>
 ```
 
-The _customWidget_ property assigned to the component's **[widget]** input is created in your TS file and can hold:
+The _customWidget_ property assigned to the component's **[widgify]** input is created in your TS file and can hold:
 - a **Single Widget**
 - a **Group of Widgets**
 - or an unlimited number of **Nested Widgets**.

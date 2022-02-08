@@ -1,9 +1,10 @@
 
-import { WidgifyBase } from '@widgify/core';
+import { WidgifyBase, widgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifyDynamicSettings } from './dynamic.interface';
 import { WidgifyDynamicComponent } from './dynamic.component';
+import { Type } from '@angular/core';
 
-export class WidgifyDynamic<T> extends WidgifyBase<WidgifyDynamicSettings<T>> {
+export class WidgifyDynamic<T = any> extends WidgifyBase<WidgifyDynamicSettings<T>> {
 	/**
 	 * **WidgifyDynamic**
 	 * 
@@ -20,11 +21,12 @@ export class WidgifyDynamic<T> extends WidgifyBase<WidgifyDynamicSettings<T>> {
 	 * You can use the suplied data to update the widget type and properties
 	 */
 
-	constructor(_settings?: WidgifyDynamicSettings<T>) { super(_settings) }
 
-	public component = WidgifyDynamicComponent;
+	public component: Type<WidgifyDynamicComponent<T>> = WidgifyDynamicComponent;
 	public defaults: WidgifyDynamicSettings<T> = {};
 
 }
 
-export const widgifyDynamic = <T>(settings: WidgifyDynamicSettings<T>) => new WidgifyDynamic<T>(settings);
+// export const widgifyDynamic = widgifyFn<WidgifyDynamicSettings>(WidgifyDynamic);
+
+export const widgifyDynamic = <T = any>(settings?: WidgifyDynamicSettings<T>) => widgifyFn<WidgifyDynamicSettings<T>, WidgifyDynamic<T>>(WidgifyDynamic)(settings);
