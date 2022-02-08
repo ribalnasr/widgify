@@ -10,8 +10,5 @@ export interface WidgifyDynamicSettings<T = any> extends WidgifySettings {
 	 */
 	data?: Observable<T> | Promise<T> | T;
 
-	/**
-	 * You can use the suplied data to update the widget type and properties
-	 */
-	widget?: WidgifyBase | ((data: T) => WidgifyBase);
+
 }

@@ -1,8 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { WidgifyDynamicSettings } from './dynamic.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
-import { Observable, combineLatest } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable } from 'rxjs';
 
 @Component({
 	selector: 'widgify-dynamic',
@@ -10,16 +10,14 @@ import { map, switchMap } from 'rxjs/operators';
 	encapsulation: ViewEncapsulation.Emulated,
 
 })
-export class WidgifyDynamicComponent<T> extends WidgifyBaseComponent<WidgifyDynamicSettings<T>> {
+export class WidgifyDynamicComponent<DataType> extends WidgifyBaseComponent<WidgifyDynamicSettings<DataType>, DataType> {
 
-	public widget = this.settings$.pipe(
+	public widgets = this.settings$.pipe(
 		switchMap(
 			settings => this.toObservables(settings.current.data),
 		),
 		map(
-			(data: T) => typeof this.settings.widget === 'function'
-				? this.settings.widget(data)
-				: this.settings.widget
+			(data: DataType) => this.getDynamicContent(data)
 		)
 	);
 

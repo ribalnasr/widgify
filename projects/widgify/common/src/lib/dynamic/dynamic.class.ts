@@ -1,10 +1,11 @@
 
-import { WidgifyBase, widgifyBase, widgifyFn } from '@widgify/core';
+import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifyDynamicSettings } from './dynamic.interface';
 import { WidgifyDynamicComponent } from './dynamic.component';
 import { Type } from '@angular/core';
 
-export class WidgifyDynamic<T = any> extends WidgifyBase<WidgifyDynamicSettings<T>> {
+
+export class WidgifyDynamic<T = any> extends WidgifyBase<WidgifyDynamicSettings<T>, T> {
 	/**
 	 * **WidgifyDynamic**
 	 * 

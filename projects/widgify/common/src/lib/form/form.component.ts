@@ -1,13 +1,13 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { WidgifyFormSettings } from './form.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
 @Component({
 	selector: 'widgify-form',
 	templateUrl: './form.component.html',
 })
-export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettings> {
+export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettings, FormGroup> {
 
 	constructor(
 		public formBuilder: FormBuilder,
@@ -15,12 +15,16 @@ export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettin
 		super();
 	}
 
-	public widget = this.settings$.pipe(
-		map(settings => {
-			const formGroup = this.settings.formGroup(this.formBuilder);
-			return settings.current.content(formGroup);
-		})
-	)
+	public widgets = this.settings$.pipe(
+		map(
+			() => {
+				const formGroup = this.settings.formGroup(this.formBuilder);
+				return this.getDynamicContent(formGroup);
+			}
+		)
+	);
+
+
 
 
 }

@@ -33,7 +33,7 @@ export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 			this.viewContainerRef.insert(this.componentRef.hostView);
 		}
 
-		// Should continue here only if settings have changed. !!!
+
 		this.componentRef.instance.settings = widget.settings;
 		this.componentRef.instance.content = widget.content;
 

@@ -73,34 +73,34 @@ export class HomePage {
 
   private clickCount = new BehaviorSubject<number>(0);
   public dynamicWidget = widgifyDynamic({
-    data: this.clickCount,
-    widget: count =>
-      widgifyMouseEvent({
-        click: () => {
-          this.clickCount.next(count + 1)
-        }
-      }).insert(
-        widgifyText({ content: 'Click me!' }),
-        widgifyText({
-          content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
-        })
-      ),
-  })
+    data: this.clickCount
+  }).insert(
+    count => widgifyMouseEvent({
+      click: () => {
+        this.clickCount.next(count + 1)
+      }
+    }).insert(
+      widgifyText({ content: 'Click me!' }),
+      widgifyText({
+        content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
+      })
+    ),
+  )
 
 
 
   public grid = wiIonGrid({ fixed: true, }).insert(
-    wiIonRow().insert(
+    wiIonRow({ class: 'dwerdtrfgh' }).insert(
       wiIonCol({ size: '3', }).insert(
         widgifyText({ content: 'test' })
       ),
       wiIonCol({ size: '3' }).insert(
         widgifyText({ content: 'test' })
       )
-    )
+    ),
   )
 
 
-  public widget = this.dynamicWidget
+  public widget = this.grid
 
 }

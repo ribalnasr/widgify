@@ -1,1 +1,1 @@
-<ng-template *ngIf="widget | async as widget" [widgify]="widget"></ng-template>
+<ng-template *ngFor="let widget of widgets | async" [widgify]="widget"></ng-template>

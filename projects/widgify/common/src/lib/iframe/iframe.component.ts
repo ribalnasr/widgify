@@ -1,4 +1,4 @@
-import { Component, ElementRef, SecurityContext } from '@angular/core';
+import { Component } from '@angular/core';
 import { WidgifyIframeSettings } from './iframe.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';

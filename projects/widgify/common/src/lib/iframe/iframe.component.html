@@ -1,1 +1,3 @@
-<iframe *ngIf="sanitizedSrc" [src]="sanitizedSrc" frameborder="0"></iframe>
+<iframe *ngIf="sanitizedSrc" [src]="sanitizedSrc" frameborder="0">
+    <ng-template *ngFor="let widget of widgets | async" [widgify]="widget"></ng-template>
+</iframe>

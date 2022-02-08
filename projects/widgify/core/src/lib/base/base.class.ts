@@ -2,7 +2,7 @@ import { WidgifySettings } from './base.interface';
 import { WidgifyBaseComponent } from './base.component';
 import { Type } from '@angular/core';
 
-export class WidgifyBase<Settings extends WidgifySettings = WidgifySettings>  {
+export class WidgifySettingsBase<Settings extends WidgifySettings = WidgifySettings>  {
 
     public component: Type<WidgifyBaseComponent<Settings>> = WidgifyBaseComponent;
     public defaults: Settings = {} as WidgifySettings as Settings;
@@ -14,21 +14,30 @@ export class WidgifyBase<Settings extends WidgifySettings = WidgifySettings>  {
         }
     }
 
-    public content?: WidgifyBase[] = [];
+    constructor(
+        private _settings?: Settings
+    ) { }
 
-    constructor(private _settings?: Settings) {
-    }
+}
 
-    public setContent(..._widgets: WidgifyBase[]) {
+
+export type DynamicContent<DataType = any> = ((data?: DataType) => WidgifyBase) | WidgifyBase
+
+export class WidgifyBase<Settings extends WidgifySettings = WidgifySettings, DataType = any> extends WidgifySettingsBase<Settings>  {
+
+    public content?: DynamicContent<DataType>[] = [];
+
+    public setContent(..._widgets: DynamicContent<DataType>[]) {
         this.content = _widgets;
         return this;
     }
 
-    public insert(..._widgets: WidgifyBase[]) {
+    public insert(..._widgets: DynamicContent<DataType>[]) {
         this.content.push(..._widgets);
         return this;
     }
 }
+
 
 export function widgifyFn<Settings extends WidgifySettings = WidgifySettings, Widget extends WidgifyBase<Settings> = WidgifyBase<Settings>>(widget: Type<Widget>) {
     return (settings?: Settings) => new widget(settings) as Widget;
