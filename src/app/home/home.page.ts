@@ -85,7 +85,10 @@ export class HomePage {
         this.clickCount.next(count + 1)
       }
     }).content(
-      parent => widgifyText({ content: 'Click me!' }),
+      parent => {
+        parent
+        return widgifyText({ content: 'Click me!' });
+      },
       widgifyText({
         content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
       })

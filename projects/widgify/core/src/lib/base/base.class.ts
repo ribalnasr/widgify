@@ -42,18 +42,18 @@ export class WidgifySettingsBase<
 
 export type WidgifyChildFn
     <
-    ParentWidget extends WidgifyBase,
+    Parent extends WidgifyBase,
     DataType extends any = any
-    > = ((parent: ParentWidget, data?: DataType) => WidgifyBase)
+    > = ((parent: Parent, data?: DataType) => WidgifyBase)
     | WidgifyBase;
 
 export type WidgifyChild
     <
-    ParentWidget extends WidgifyBase,
+    Parent extends WidgifyBase,
     DataType extends any = any
-    > = WidgifyChildFn<ParentWidget, DataType>
-    | [string, WidgifyChildFn<ParentWidget, DataType>]
-    | [WidgifyChildFn<ParentWidget, DataType>, string];
+    > = WidgifyChildFn<Parent, DataType>
+    | [string, WidgifyChildFn<Parent, DataType>]
+    | [WidgifyChildFn<Parent, DataType>, string];
 
 export class WidgifyBase
     <
@@ -62,6 +62,7 @@ export class WidgifyBase
     Widget extends WidgifyBase<Settings, DataType> = any
     >
     extends WidgifySettingsBase<Settings>  {
+
 
 
     public children$ = new BehaviorSubject<WidgifyChild<Widget, DataType>[]>([]);

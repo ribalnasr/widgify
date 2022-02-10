@@ -23,7 +23,7 @@ export class WiIonBaseComponent<
 	}
 
 	ngOnInit() {
-		this.attrSubscription = this.settings$.subscribe(this.applyAttributes);
+		this.attrSubscription = this.settings$.subscribe(this.applyAttributes.bind(this));
 	}
 
 	ngOnDestroy() {

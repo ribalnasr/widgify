@@ -6,18 +6,18 @@
       // "@widgify/cli": [
       //   "dist/widgify/cli/widgify-cli",
       // ],
-      // "@widgify/common": [
-      //   "projects/widgify/common/src/public-api",
-      //   // "dist/widgify/common/widgify-common",
-      // ],
-      // "@widgify/core": [
-      //   "projects/widgify/core/src/public-api",
-      //   // "dist/widgify/core/widgify-core",
-      // ],
-      // "@widgify/ionic": [
-      //   "projects/widgify/ionic/src/public-api",
-      //   // "dist/widgify/ionic/widgify-ionic",
-      // ]
+      "@widgify/common": [
+        "projects/widgify/common/src/public-api",
+        // "dist/widgify/common/widgify-common",
+      ],
+      "@widgify/core": [
+        "projects/widgify/core/src/public-api",
+        // "dist/widgify/core/widgify-core",
+      ],
+      "@widgify/ionic": [
+        "projects/widgify/ionic/src/public-api",
+        // "dist/widgify/ionic/widgify-ionic",
+      ]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
