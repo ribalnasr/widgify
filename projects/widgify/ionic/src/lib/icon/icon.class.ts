@@ -1,9 +1,9 @@
 import { WiIonIconSettings } from './icon.interface';
 import { WiIonIconComponent } from './icon.component';
 import { WiIonBase } from '../base/base.class';
-import { widgifyFn } from '../../../../core/src/public-api';
+import { widgifyFn } from '@widgify/core';
 
-export class WiIonIcon extends WiIonBase<WiIonIconSettings> {
+export class WiIonIcon extends WiIonBase<WiIonIconSettings, null, WiIonIcon> {
 	public component = WiIonIconComponent;
 
 	/**

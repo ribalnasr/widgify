@@ -2,6 +2,7 @@ import {
 	Component, Input, ViewContainerRef, ComponentFactoryResolver,
 	ComponentRef, Directive
 } from '@angular/core';
+import { WidgifyBaseComponent } from '../base/base.component';
 import { WidgifyBase } from '../base/base.class';
 
 @Directive({
@@ -9,7 +10,9 @@ import { WidgifyBase } from '../base/base.class';
 })
 export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 
-	public componentRef: ComponentRef<any>;
+	public componentRef: ComponentRef<WidgifyBaseComponent>;
+
+	@Input() parent?: WidgetType;
 
 	@Input('widgify')
 	public set widget(widget: WidgetType) {
@@ -30,12 +33,13 @@ export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 		if (!this.componentRef) {
 			const factory = this.factoryResolver.resolveComponentFactory(widget.component);
 			this.componentRef = this.viewContainerRef.createComponent(factory);
-			this.viewContainerRef.insert(this.componentRef.hostView);
+			this.componentRef.instance.childrenSource$ = widget.children$;
+			this.componentRef.instance.settingsSource$ = widget.settings$;
+			this.componentRef.instance.widget = widget;
+			this.viewContainerRef.insert(this.componentRef.hostView)
 		}
 
 
-		this.componentRef.instance.settings = widget.settings;
-		this.componentRef.instance.content = widget.content;
 
 	}
 

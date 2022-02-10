@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WidgifyDynamic, WidgifyGroup, WidgifyMouseEvent, WidgifyText } from '@widgify/common';
+import { WidgifyDynamic, WidgifyMouseEvent, WidgifyText } from '@widgify/common';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

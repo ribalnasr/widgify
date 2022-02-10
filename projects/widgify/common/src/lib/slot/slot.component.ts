@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { WidgifySlotSettings } from './slot.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
+import { WidgifySlot } from './slot.class';
 
 @Component({
 	selector: 'widgify-slot',
 	templateUrl: './slot.component.html',
 })
-export class WidgifySlotComponent extends WidgifyBaseComponent<WidgifySlotSettings> {
+export class WidgifySlotComponent extends WidgifyBaseComponent<WidgifySlotSettings, null, WidgifySlot> {
 
 	/**
 	 * Add your slot's logic here.

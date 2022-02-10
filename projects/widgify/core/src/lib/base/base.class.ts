@@ -1,39 +1,97 @@
 import { WidgifySettings } from './base.interface';
 import { WidgifyBaseComponent } from './base.component';
 import { Type } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
-export class WidgifySettingsBase<Settings extends WidgifySettings = WidgifySettings>  {
+export class WidgifySettingsBase<
+    Settings extends WidgifySettings = WidgifySettings,
+    DataType extends any = any,
+    Widget extends WidgifyBase<Settings, DataType> = any
+    >  {
 
-    public component: Type<WidgifyBaseComponent<Settings>> = WidgifyBaseComponent;
+    public component: Type<WidgifyBaseComponent<Settings, DataType, Widget>> = WidgifyBaseComponent;
     public defaults: Settings = {} as WidgifySettings as Settings;
 
+    public settings$ = new BehaviorSubject<Settings>(this.defaults);
+
     public get settings() {
-        return {
-            ...(this.defaults || {}),
-            ...this._settings
-        }
+        return this.settings$.value;
     }
 
     constructor(
-        private _settings?: Settings
-    ) { }
+        settings?: Settings
+    ) {
+        this.updateSettings(settings)
+    }
+
+    updateSettings(settings?: Settings) {
+        if (settings) {
+
+            const updatedSettings = {
+                ...this.settings,
+                ...settings
+            };
+
+            this.settings$.next(updatedSettings);
+        }
+        return this;
+    }
 
 }
 
 
-export type DynamicContent<DataType = any> = ((data?: DataType) => WidgifyBase) | WidgifyBase
+export type WidgifyChildFn
+    <
+    ParentWidget extends WidgifyBase,
+    DataType extends any = any
+    > = ((parent: ParentWidget, data?: DataType) => WidgifyBase)
+    | WidgifyBase;
 
-export class WidgifyBase<Settings extends WidgifySettings = WidgifySettings, DataType = any> extends WidgifySettingsBase<Settings>  {
+export type WidgifyChild
+    <
+    ParentWidget extends WidgifyBase,
+    DataType extends any = any
+    > = WidgifyChildFn<ParentWidget, DataType>
+    | [string, WidgifyChildFn<ParentWidget, DataType>]
+    | [WidgifyChildFn<ParentWidget, DataType>, string];
 
-    public content?: DynamicContent<DataType>[] = [];
+export class WidgifyBase
+    <
+    Settings extends WidgifySettings = WidgifySettings,
+    DataType extends any = any,
+    Widget extends WidgifyBase<Settings, DataType> = any
+    >
+    extends WidgifySettingsBase<Settings>  {
 
-    public setContent(..._widgets: DynamicContent<DataType>[]) {
-        this.content = _widgets;
+
+    public children$ = new BehaviorSubject<WidgifyChild<Widget, DataType>[]>([]);
+
+    public get children() {
+        return this.children$.value;
+    };
+
+    public content(...widgets: WidgifyChild<Widget, DataType>[]) {
+        this.children$.next(widgets);
         return this;
     }
 
-    public insert(..._widgets: DynamicContent<DataType>[]) {
-        this.content.push(..._widgets);
+    public insertChild(..._widgets: WidgifyChild<Widget, DataType>[]) {
+        const children = [...this.children];
+        children.push(..._widgets);
+        this.children$.next(children);
+        return this;
+    }
+
+    public removeChild(index: number) {
+        const children = [...this.children];
+        children.splice(index, 1)
+        this.children$.next(children);
+        return this;
+    }
+
+    public removeChildById(id: string) {
+        const children = this.children.filter(child => !(Array.isArray(child) && (child[0] === id || child[1] === id)))
+        this.children$.next(children);
         return this;
     }
 }

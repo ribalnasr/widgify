@@ -14,19 +14,19 @@ export class WidgifyRepeaterComponent<T> extends WidgifyBaseComponent<WidgifyRep
 		map(
 			settings => {
 				let list: WidgifyRepeaterList<T>;
-				if (Array.isArray(settings.current.list)) {
-					list = new WidgifyRepeaterList(settings.current.list) as WidgifyRepeaterList<T>
+				if (Array.isArray(settings.list)) {
+					list = new WidgifyRepeaterList(settings.list) as WidgifyRepeaterList<T>
 				} else {
-					list = settings.current.list
+					list = settings.list
 				}
 				return { ...settings, list };
 			}
 		),
 		switchMap(settings => settings.list.valueChanges.pipe(
 			map(
-				value => value.map((data, index) => typeof settings.current.widget === 'function'
-					? settings.current.widget(new WidgifyRepeaterRow<T>(data, index, settings.list), settings.list)
-					: settings.current.widget
+				value => value.map((data, index) => typeof settings.widget === 'function'
+					? settings.widget(new WidgifyRepeaterRow<T>(data, index, settings.list), settings.list)
+					: settings.widget
 				)
 			)
 		)),

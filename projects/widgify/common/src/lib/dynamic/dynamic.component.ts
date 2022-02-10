@@ -3,6 +3,7 @@ import { WidgifyDynamicSettings } from './dynamic.interface';
 import { WidgifyBaseComponent } from '@widgify/core';
 import { map, switchMap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
+import { WidgifyDynamic } from './dynamic.class';
 
 @Component({
 	selector: 'widgify-dynamic',
@@ -10,14 +11,17 @@ import { combineLatest, Observable } from 'rxjs';
 	encapsulation: ViewEncapsulation.Emulated,
 
 })
-export class WidgifyDynamicComponent<DataType> extends WidgifyBaseComponent<WidgifyDynamicSettings<DataType>, DataType> {
+export class WidgifyDynamicComponent<DataType extends any = any> extends WidgifyBaseComponent<WidgifyDynamicSettings<DataType>, DataType, WidgifyDynamic<DataType>> {
 
 	public widgets = this.settings$.pipe(
 		switchMap(
-			settings => this.toObservables(settings.current.data),
+			settings => this.toObservables(settings.data),
 		),
 		map(
-			(data: DataType) => this.getDynamicContent(data)
+			(data: DataType) => {
+				console.log(data)
+				return this.parseChildren(data);
+			}
 		)
 	);
 

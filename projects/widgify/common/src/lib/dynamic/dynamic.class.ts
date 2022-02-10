@@ -5,7 +5,7 @@ import { WidgifyDynamicComponent } from './dynamic.component';
 import { Type } from '@angular/core';
 
 
-export class WidgifyDynamic<T = any> extends WidgifyBase<WidgifyDynamicSettings<T>, T> {
+export class WidgifyDynamic<T extends any = any> extends WidgifyBase<WidgifyDynamicSettings<T>, T, WidgifyDynamic<T>> {
 	/**
 	 * **WidgifyDynamic**
 	 * 
@@ -32,4 +32,4 @@ export class WidgifyDynamic<T = any> extends WidgifyBase<WidgifyDynamicSettings<
 
 // export const widgifyDynamic = widgifyFn<WidgifyDynamicSettings>(WidgifyDynamic);
 
-export const widgifyDynamic = <T = any>(settings?: WidgifyDynamicSettings<T>) => widgifyFn<WidgifyDynamicSettings<T>, WidgifyDynamic<T>>(WidgifyDynamic)(settings);
+export const widgifyDynamic = <T extends any = any>(settings?: WidgifyDynamicSettings<T>) => widgifyFn<WidgifyDynamicSettings<T>, WidgifyDynamic<T>>(WidgifyDynamic)(settings);

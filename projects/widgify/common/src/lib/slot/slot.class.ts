@@ -2,7 +2,7 @@ import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifySlotSettings } from './slot.interface';
 import { WidgifySlotComponent } from './slot.component';
 
-export class WidgifySlot extends WidgifyBase<WidgifySlotSettings> {
+export class WidgifySlot extends WidgifyBase<WidgifySlotSettings, null, WidgifySlot> {
 	public component = WidgifySlotComponent;
 
 	/**

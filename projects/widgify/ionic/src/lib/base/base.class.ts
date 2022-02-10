@@ -3,8 +3,12 @@ import { WiIonBaseSettings } from './base.interface';
 import { WiIonBaseComponent } from './base.component';
 import { Type } from '@angular/core';
 
-export class WiIonBase<Settings extends WiIonBaseSettings = WiIonBaseSettings> extends WidgifyBase<Settings> {
-	public component = WiIonBaseComponent as Type<WiIonBaseComponent<Settings>>;
+export class WiIonBase<
+	Settings extends WiIonBaseSettings = WiIonBaseSettings,
+	DataType extends any = any,
+	Widget extends WiIonBase<Settings, DataType> = any,
+	> extends WidgifyBase<Settings, DataType, Widget> {
+	public component = WiIonBaseComponent as Type<WiIonBaseComponent<Settings, DataType, Widget>>;
 
 	/**
 	 * The default settings for IonBase.

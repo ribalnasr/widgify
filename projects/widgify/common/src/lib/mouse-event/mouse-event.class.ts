@@ -2,7 +2,7 @@ import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifyMouseEventSettings } from './mouse-event.interface';
 import { WidgifyMouseEventComponent } from './mouse-event.component';
 
-export class WidgifyMouseEvent extends WidgifyBase<WidgifyMouseEventSettings> {
+export class WidgifyMouseEvent extends WidgifyBase<WidgifyMouseEventSettings, null, WidgifyMouseEvent> {
 	public component = WidgifyMouseEventComponent;
 	public defaults: WidgifyMouseEventSettings = {};
 

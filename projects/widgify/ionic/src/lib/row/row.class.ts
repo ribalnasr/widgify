@@ -1,9 +1,9 @@
 import { WiIonRowSettings } from './row.interface';
 import { WiIonRowComponent } from './row.component';
 import { WiIonBase } from '../base/base.class';
-import { widgifyFn } from '../../../../core/src/public-api';
+import { widgifyFn } from '@widgify/core';
 
-export class WiIonRow extends WiIonBase<WiIonRowSettings> {
+export class WiIonRow extends WiIonBase<WiIonRowSettings, null, WiIonRow> {
 	public component = WiIonRowComponent;
 
 	/**

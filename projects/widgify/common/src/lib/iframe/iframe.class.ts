@@ -2,7 +2,7 @@ import { WidgifyBase, widgifyFn } from '@widgify/core';
 import { WidgifyIframeSettings } from './iframe.interface';
 import { WidgifyIframeComponent } from './iframe.component';
 
-export class WidgifyIframe extends WidgifyBase<WidgifyIframeSettings> {
+export class WidgifyIframe extends WidgifyBase<WidgifyIframeSettings, null, WidgifyIframe> {
 	public component = WidgifyIframeComponent;
 
 	/**
