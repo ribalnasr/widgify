@@ -1,11 +1,9 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { widgifyBase } from '@widgify/core';
+import { wiBase } from '@widgify/core';
 import { BehaviorSubject, of } from 'rxjs';
-import { widgifyDynamic, widgifyForm, widgifyText, widgifyRepeater, widgifyMouseEvent, widgifyRepeaterList } from '@widgify/common';
-import { wiIonButton, wiIonGrid, wiIonIcon, wiIonInput, wiIonItem, wiIonLabel } from '@widgify/ionic';
+import { wiData, wiForm, wiText, wiRepeater, wiMouseEvent, wiRepeaterList } from '@widgify/common';
+import { wiIonButton, wiIonCol, wiIonGrid, wiIonIcon, wiIonInput, wiIonItem, wiIonLabel, wiIonRow } from '@widgify/ionic';
 import { Validators } from '@angular/forms';
-import { wiIonRow } from '../../../projects/widgify/ionic/src/lib/row/row.class';
-import { wiIonCol } from '../../../projects/widgify/ionic/src/lib/col/col.class';
 
 @Component({
   selector: 'app-home',
@@ -15,27 +13,27 @@ import { wiIonCol } from '../../../projects/widgify/ionic/src/lib/col/col.class'
 export class HomePage {
 
 
-  public base = widgifyBase({
+  public base = wiBase({
     class: 'base'
   })
 
-  public text = widgifyText({
+  public text = wiText({
     content: 'text goes here'
   })
 
-  public form = widgifyForm({
+  public form = wiForm({
     formGroup: formBuilder => formBuilder.group({
       name: ['', Validators.required],
       surname: ['nasr', Validators.required],
     })
   }).content(
-    widgifyForm({
+    wiForm({
       formGroup: formBuilder => formBuilder.group({
         name: ['', Validators.required],
         surname: ['nasr', Validators.required],
       })
     }).content(
-      widgifyForm({
+      wiForm({
         formGroup: formBuilder => formBuilder.group({
           name: ['', Validators.required],
           surname: ['nasr', Validators.required],
@@ -44,14 +42,14 @@ export class HomePage {
     )
     // wiIonItem().content(
     //   wiIonLabel().content(
-    //     widgifyText({ content: 'Name' })
+    //     wiText({ content: 'Name' })
     //   ),
     //   wiIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
     // ),
     // (parent, formGroup) => {
     //   return wiIonItem().content(
     //     wiIonLabel().content(
-    //       widgifyText({ content: 'SurName' })
+    //       wiText({ content: 'SurName' })
     //     ),
     //     wiIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
     //   );
@@ -64,39 +62,39 @@ export class HomePage {
     placeholder: 'enter value'
   })
 
-  // private repeaterList = widgifyRepeaterList([2, 4, 6, 8]);
-  // public repeater = widgifyRepeater({
+  // private repeaterList = wiRepeaterList([2, 4, 6, 8]);
+  // public repeater = wiRepeater({
   //   list: this.repeaterList,
-  //   widget: row => widgifyMouseEvent({
+  //   widget: row => wiMouseEvent({
   //     click: () => {
   //       console.log(row)
   //       return row.update(7);
   //     },
-  //     widget: widgifyText({ content: row.data })
+  //     widget: wiText({ content: row.data })
   //   })
   // })
 
   private clickCount = new BehaviorSubject<number>(0);
-  public dynamicWidget = widgifyDynamic({
+  public dynamicWidget = wiData({
     data: this.clickCount
   }).content(
-    (parent, count) => widgifyMouseEvent({
+    (parent, count) => wiMouseEvent({
       click: () => {
         this.clickCount.next(count + 1)
       }
     }).content(
       parent => {
         parent
-        return widgifyText({ content: 'Click me!' });
+        return wiText({ content: 'Click me!' });
       },
-      widgifyText({
+      wiText({
         content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
       })
     ),
   )
 
   public idTest = wiIonGrid({ fixed: true, }).content(
-    ['egrwtrb', () => widgifyText({ content: 'test' })]
+    ['egrwtrb', () => wiText({ content: 'test' })]
   )
 
 
@@ -104,19 +102,19 @@ export class HomePage {
   public grid = wiIonGrid({ fixed: true, }).content(
     parent => wiIonRow().content(
       (parent) => wiIonCol().content(
-        parent => widgifyMouseEvent({
+        parent => wiMouseEvent({
           click: () => {
             parent.removeChildById('ID2').insertChild(
-              [widgifyText({ content: 'ID4' }), 'ID4'],
+              [wiText({ content: 'ID4' }), 'ID4'],
 
             )
           }
         }).content(
-          widgifyText({ content: 'click here to remove by id' })
+          wiText({ content: 'click here to remove by id' })
         ),
-        [widgifyText({ content: 'ID1' }), 'ID1'],
-        [widgifyText({ content: 'ID2' }), 'ID2'],
-        [widgifyText({ content: 'ID3' }), 'ID3'],
+        [wiText({ content: 'ID1' }), 'ID1'],
+        [wiText({ content: 'ID2' }), 'ID2'],
+        [wiText({ content: 'ID3' }), 'ID3'],
       )
     )
   )

@@ -1,12 +1,12 @@
-import { WidgifyBase, widgifyFn } from '@widgify/core';
-import { WidgifyRepeaterSettings } from './repeater.interface';
-import { WidgifyRepeaterComponent } from './repeater.component';
-import { WidgifyRepeaterList } from './repeater-list.class';
+import { WiBase, widgifyFn } from '@widgify/core';
+import { WiRepeaterSettings } from './repeater.interface';
+import { WiRepeaterComponent } from './repeater.component';
+import { WiRepeaterList } from './repeater-list.class';
 
-export class WidgifyRepeater<T = any> extends WidgifyBase<WidgifyRepeaterSettings<T>> {
-	public component = WidgifyRepeaterComponent;
-	public defaults: WidgifyRepeaterSettings<T> = { list: new WidgifyRepeaterList<T>() };
+export class WiRepeater<T = any> extends WiBase<WiRepeaterSettings<T>> {
+	public component = WiRepeaterComponent;
+	public defaults: WiRepeaterSettings<T> = { list: new WiRepeaterList<T>() };
 
 }
 
-export const widgifyRepeater = <T = any>(settings?: WidgifyRepeaterSettings<T>) => widgifyFn<WidgifyRepeaterSettings<T>, WidgifyRepeater<T>>(WidgifyRepeater)(settings);
+export const wiRepeater = <T = any>(settings?: WiRepeaterSettings<T>) => widgifyFn<WiRepeaterSettings<T>, WiRepeater<T>>(WiRepeater)(settings);

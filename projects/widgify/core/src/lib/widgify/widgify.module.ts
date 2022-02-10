@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WidgifyComponent, WidgifyDirective } from './widgify.component';
+import { WiComponent, WiDirective } from './widgify.component';
 
 @NgModule({
 	imports: [
 		CommonModule,
 	],
 	declarations: [
-		WidgifyComponent,
-		WidgifyDirective,
+		WiComponent,
+		WiDirective,
 	],
 	exports: [
-		WidgifyComponent,
-		WidgifyDirective,
+		WiComponent,
+		WiDirective,
 	],
 })
-export class WidgifyModule { }
+export class Widgify { }
 

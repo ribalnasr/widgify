@@ -1,22 +1,22 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { Widgify } from "@widgify/core";
-import { WiTextComponent } from './text.component';
+import { WiDataComponent } from './data.component';
 
 @NgModule({
     declarations: [
-        WiTextComponent
+        WiDataComponent
     ],
     exports: [
-        WiTextComponent
+        WiDataComponent
     ],
     imports: [
         CommonModule,
         Widgify
     ]
-}) export class WiTextModule { }
+}) export class WiDataModule { }
 
-export * from './text.component';
-export * from './text.interface';
-export * from './text.class';
+export * from './data.component';
+export * from './data.interface';
+export * from './data.class';
 

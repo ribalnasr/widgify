@@ -1,13 +1,13 @@
-import { WidgifyBase, widgifyFn } from '@widgify/core';
-import { WidgifyFormSettings } from './form.interface';
-import { WidgifyFormComponent } from './form.component';
+import { WiBase, widgifyFn } from '@widgify/core';
+import { WiFormSettings } from './form.interface';
+import { WiFormComponent } from './form.component';
 import { FormGroup } from '@angular/forms';
 
-export class WidgifyForm extends WidgifyBase<WidgifyFormSettings, FormGroup, WidgifyForm> {
-	public component = WidgifyFormComponent;
-	public defaults: WidgifyFormSettings = {};
+export class WiForm extends WiBase<WiFormSettings, FormGroup, WiForm> {
+	public component = WiFormComponent;
+	public defaults: WiFormSettings = {};
 
 }
 
 
-export const widgifyForm = widgifyFn<WidgifyFormSettings, WidgifyForm>(WidgifyForm);
+export const wiForm = widgifyFn<WiFormSettings, WiForm>(WiForm);

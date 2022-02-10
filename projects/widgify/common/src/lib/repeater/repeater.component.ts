@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
-import { WidgifyRepeaterSettings } from './repeater.interface';
-import { WidgifyBaseComponent } from '@widgify/core';
+import { WiRepeaterSettings } from './repeater.interface';
+import { WiBaseComponent } from '@widgify/core';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { WidgifyRepeaterList } from './repeater-list.class';
-import { WidgifyRepeaterRow } from './repeater-row.class';
+import { WiRepeaterList } from './repeater-list.class';
+import { WiRepeaterRow } from './repeater-row.class';
 @Component({
-	selector: 'widgify-repeater',
+	selector: 'wi-repeater',
 	templateUrl: './repeater.component.html',
 })
-export class WidgifyRepeaterComponent<T> extends WidgifyBaseComponent<WidgifyRepeaterSettings<T>> {
+export class WiRepeaterComponent<T> extends WiBaseComponent<WiRepeaterSettings<T>> {
 
 	public widgets = this.settings$.pipe(
 		map(
 			settings => {
-				let list: WidgifyRepeaterList<T>;
+				let list: WiRepeaterList<T>;
 				if (Array.isArray(settings.list)) {
-					list = new WidgifyRepeaterList(settings.list) as WidgifyRepeaterList<T>
+					list = new WiRepeaterList(settings.list) as WiRepeaterList<T>
 				} else {
 					list = settings.list
 				}
@@ -25,7 +25,7 @@ export class WidgifyRepeaterComponent<T> extends WidgifyBaseComponent<WidgifyRep
 		switchMap(settings => settings.list.valueChanges.pipe(
 			map(
 				value => value.map((data, index) => typeof settings.widget === 'function'
-					? settings.widget(new WidgifyRepeaterRow<T>(data, index, settings.list), settings.list)
+					? settings.widget(new WiRepeaterRow<T>(data, index, settings.list), settings.list)
 					: settings.widget
 				)
 			)

@@ -1,8 +1,8 @@
-import { WidgifyBase, WidgifySettings } from '@widgify/core';
-import { WidgifyRepeaterList } from './repeater-list.class';
-import { WidgifyRepeaterRow } from './repeater-row.class';
+import { WiBase, WiSettings } from '@widgify/core';
+import { WiRepeaterList } from './repeater-list.class';
+import { WiRepeaterRow } from './repeater-row.class';
 
-export interface WidgifyRepeaterSettings<T = any> extends WidgifySettings {
-	list?: WidgifyRepeaterList<T> | T[];
-	widget?: (WidgifyBase | ((row?: WidgifyRepeaterRow<T>, list?: WidgifyRepeaterList<T>) => WidgifyBase))
+export interface WiRepeaterSettings<T = any> extends WiSettings {
+	list?: WiRepeaterList<T> | T[];
+	widget?: (WiBase | ((row?: WiRepeaterRow<T>, list?: WiRepeaterList<T>) => WiBase))
 }

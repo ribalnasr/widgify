@@ -1,5 +1,5 @@
 
-export interface WidgifySettings {
+export interface WiSettings {
 	class?: string;
 }
 

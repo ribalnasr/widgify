@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WidgifyDynamic, WidgifyMouseEvent, WidgifyText } from '@widgify/common';
+import { WiData, WiMouseEvent, WiText } from '@widgify/common';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -8,23 +8,23 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UsagePage {
 
-  // public helloWidgify = new WidgifyText({
-  //   content: 'Hello Widgify!'
+  // public helloWi = new WiText({
+  //   content: 'Hello Wi!'
   // })
 
   // private clickCount = new BehaviorSubject<number>(0);
-  // public clickMe = new WidgifyDynamic({
+  // public clickMe = new WiData({
   //   class: 'dynamic',
   //   data: this.clickCount,
   //   widget: count =>
-  //     new WidgifyMouseEvent({
+  //     new WiMouseEvent({
   //       click: () => {
   //         this.clickCount.next(count + 1)
   //       },
-  //       widget: new WidgifyGroup({
+  //       widget: new WiGroup({
   //         widgets: [
-  //           new WidgifyText({ content: 'Click me!' }),
-  //           new WidgifyText({
+  //           new WiText({ content: 'Click me!' }),
+  //           new WiText({
   //             content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
   //           })
   //         ]

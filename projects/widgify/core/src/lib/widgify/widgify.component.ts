@@ -2,15 +2,15 @@ import {
 	Component, Input, ViewContainerRef, ComponentFactoryResolver,
 	ComponentRef, Directive
 } from '@angular/core';
-import { WidgifyBaseComponent } from '../base/base.component';
-import { WidgifyBase } from '../base/base.class';
+import { WiBaseComponent } from '../base/base.component';
+import { WiBase } from '../base/base.class';
 
 @Directive({
 	selector: '[widgify]'
 })
-export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
+export class WiDirective<WidgetType extends WiBase = WiBase> {
 
-	public componentRef: ComponentRef<WidgifyBaseComponent>;
+	public componentRef: ComponentRef<WiBaseComponent>;
 
 	@Input() parent?: WidgetType;
 
@@ -49,7 +49,7 @@ export class WidgifyDirective<WidgetType extends WidgifyBase = WidgifyBase> {
 	selector: 'widgify',
 	template: '<ng-template [widgify]="widget"></ng-template>	',
 })
-export class WidgifyComponent<WidgetType extends WidgifyBase = WidgifyBase> {
+export class WiComponent<WidgetType extends WiBase = WiBase> {
 
 	@Input() widget: WidgetType;
 

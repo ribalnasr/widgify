@@ -28,3 +28,13 @@ const modules = [
     ]
 }) export class WiIonicModule { }
 
+export * from './base/base.module';
+
+export * from './input/input.module';
+export * from './item/item.module';
+export * from './label/label.module';
+export * from './grid/grid.module';
+export * from './row/row.module';
+export * from './col/col.module';
+export * from './button/button.module';
+export * from './icon/icon.module';

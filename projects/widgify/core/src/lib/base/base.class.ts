@@ -1,16 +1,16 @@
-import { WidgifySettings } from './base.interface';
-import { WidgifyBaseComponent } from './base.component';
+import { WiSettings } from './base.interface';
+import { WiBaseComponent } from './base.component';
 import { Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export class WidgifySettingsBase<
-    Settings extends WidgifySettings = WidgifySettings,
+export class WiSettingsBase<
+    Settings extends WiSettings = WiSettings,
     DataType extends any = any,
-    Widget extends WidgifyBase<Settings, DataType> = any
+    Widget extends WiBase<Settings, DataType> = any
     >  {
 
-    public component: Type<WidgifyBaseComponent<Settings, DataType, Widget>> = WidgifyBaseComponent;
-    public defaults: Settings = {} as WidgifySettings as Settings;
+    public component: Type<WiBaseComponent<Settings, DataType, Widget>> = WiBaseComponent;
+    public defaults: Settings = {} as WiSettings as Settings;
 
     public settings$ = new BehaviorSubject<Settings>(this.defaults);
 
@@ -40,43 +40,43 @@ export class WidgifySettingsBase<
 }
 
 
-export type WidgifyChildFn
+export type WiChildFn
     <
-    Parent extends WidgifyBase,
+    Parent extends WiBase,
     DataType extends any = any
-    > = ((parent: Parent, data?: DataType) => WidgifyBase)
-    | WidgifyBase;
+    > = ((parent: Parent, data?: DataType) => WiBase)
+    | WiBase;
 
-export type WidgifyChild
+export type WiChild
     <
-    Parent extends WidgifyBase,
+    Parent extends WiBase,
     DataType extends any = any
-    > = WidgifyChildFn<Parent, DataType>
-    | [string, WidgifyChildFn<Parent, DataType>]
-    | [WidgifyChildFn<Parent, DataType>, string];
+    > = WiChildFn<Parent, DataType>
+    | [string, WiChildFn<Parent, DataType>]
+    | [WiChildFn<Parent, DataType>, string];
 
-export class WidgifyBase
+export class WiBase
     <
-    Settings extends WidgifySettings = WidgifySettings,
+    Settings extends WiSettings = WiSettings,
     DataType extends any = any,
-    Widget extends WidgifyBase<Settings, DataType> = any
+    Widget extends WiBase<Settings, DataType> = any
     >
-    extends WidgifySettingsBase<Settings>  {
+    extends WiSettingsBase<Settings>  {
 
 
 
-    public children$ = new BehaviorSubject<WidgifyChild<Widget, DataType>[]>([]);
+    public children$ = new BehaviorSubject<WiChild<Widget, DataType>[]>([]);
 
     public get children() {
         return this.children$.value;
     };
 
-    public content(...widgets: WidgifyChild<Widget, DataType>[]) {
+    public content(...widgets: WiChild<Widget, DataType>[]) {
         this.children$.next(widgets);
         return this;
     }
 
-    public insertChild(..._widgets: WidgifyChild<Widget, DataType>[]) {
+    public insertChild(..._widgets: WiChild<Widget, DataType>[]) {
         const children = [...this.children];
         children.push(..._widgets);
         this.children$.next(children);
@@ -98,11 +98,11 @@ export class WidgifyBase
 }
 
 
-export function widgifyFn<Settings extends WidgifySettings = WidgifySettings, Widget extends WidgifyBase<Settings> = WidgifyBase<Settings>>(widget: Type<Widget>) {
+export function widgifyFn<Settings extends WiSettings = WiSettings, Widget extends WiBase<Settings> = WiBase<Settings>>(widget: Type<Widget>) {
     return (settings?: Settings) => new widget(settings) as Widget;
 }
 
-export const widgifyBase = widgifyFn(WidgifyBase);
+export const wiBase = widgifyFn(WiBase);
 
 
 

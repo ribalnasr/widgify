@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { WidgifyModule } from "@widgify/core";
+import { Widgify } from "@widgify/core";
 import { WiIonRowComponent } from './row.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { WiIonRowComponent } from './row.component';
     ],
     imports: [
         CommonModule,
-        WidgifyModule,
+        Widgify,
         // Import here any module that is used by the ion-row.
     ]
 }) export class WiIonRowModule { }

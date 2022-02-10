@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { WidgifyModule } from "@widgify/core";
+import { Widgify } from "@widgify/core";
 import { WiIonInputComponent } from './input.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { WiIonInputComponent } from './input.component';
     imports: [
         CommonModule,
         IonicModule,
-        WidgifyModule,
+        Widgify,
         ReactiveFormsModule
     ]
 }) export class WiIonInputModule { }

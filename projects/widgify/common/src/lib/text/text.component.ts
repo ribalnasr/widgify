@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { WidgifyTextSettings } from './text.interface';
-import { WidgifyBaseComponent } from '@widgify/core';
-import { WidgifyText } from './text.class';
+import { WiTextSettings } from './text.interface';
+import { WiBaseComponent } from '@widgify/core';
+import { WiText } from './text.class';
 
 @Component({
 	selector: 'span',
 	templateUrl: './text.component.html',
 })
-export class WidgifyTextComponent extends WidgifyBaseComponent<WidgifyTextSettings, null, WidgifyText> {
+export class WiTextComponent extends WiBaseComponent<WiTextSettings, null, WiText> {
 
 }

@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { WiIonBaseSettings } from './base.interface';
-import { WidgifyBaseComponent } from '@widgify/core';
+import { WiBaseComponent } from '@widgify/core';
 import { Subscription } from 'rxjs';
 import { WiIonBase } from './base.class';
 
@@ -12,7 +12,7 @@ export class WiIonBaseComponent<
 	Settings extends WiIonBaseSettings = WiIonBaseSettings,
 	DataType extends any = any,
 	Widget extends WiIonBase<Settings, DataType> = any,
-	> extends WidgifyBaseComponent<Settings, DataType, Widget> {
+	> extends WiBaseComponent<Settings, DataType, Widget> {
 
 	private attrSubscription: Subscription;
 

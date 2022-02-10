@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
-import { WidgifyModule } from "@widgify/core";
+import { Widgify } from "@widgify/core";
 import { WiIonItemComponent } from './item.component';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { WiIonItemComponent } from './item.component';
     imports: [
         CommonModule,
         IonicModule,
-        WidgifyModule,
+        Widgify,
     ]
 }) export class WiIonItemModule { }
 

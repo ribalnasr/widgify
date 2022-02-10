@@ -1,10 +1,10 @@
-import { WidgifyBase, WidgifySettings } from '@widgify/core';
+import { WiBase, WiSettings } from '@widgify/core';
 
-export interface WiIonBaseSettings extends WidgifySettings {
+export interface WiIonBaseSettings extends WiSettings {
 
 	slot?: string;
 
-	// content?: WidgifyBase | WidgifyBase[];
+	// content?: WiBase | WiBase[];
 
 
 }

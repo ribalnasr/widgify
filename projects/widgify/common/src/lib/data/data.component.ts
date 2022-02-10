@@ -1,17 +1,17 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { WidgifyDynamicSettings } from './dynamic.interface';
-import { WidgifyBaseComponent } from '@widgify/core';
+import { WiDataSettings } from './data.interface';
+import { WiBaseComponent } from '@widgify/core';
 import { map, switchMap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
-import { WidgifyDynamic } from './dynamic.class';
+import { WiData } from './data.class';
 
 @Component({
-	selector: 'widgify-dynamic',
-	templateUrl: './dynamic.component.html',
+	selector: 'wi-data',
+	templateUrl: './data.component.html',
 	encapsulation: ViewEncapsulation.Emulated,
 
 })
-export class WidgifyDynamicComponent<DataType extends any = any> extends WidgifyBaseComponent<WidgifyDynamicSettings<DataType>, DataType, WidgifyDynamic<DataType>> {
+export class WiDataComponent<DataType extends any = any> extends WiBaseComponent<WiDataSettings<DataType>, DataType, WiData<DataType>> {
 
 	public widgets = this.settings$.pipe(
 		switchMap(

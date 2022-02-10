@@ -1,6 +1,6 @@
-import { WidgifySettings } from '@widgify/core';
+import { WiSettings } from '@widgify/core';
 
-export interface WidgifyIframeSettings extends WidgifySettings {
+export interface WiIframeSettings extends WiSettings {
 
 	/**
 	 * @param src

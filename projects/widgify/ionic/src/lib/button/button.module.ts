@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { WidgifyModule } from "@widgify/core";
+import { Widgify } from "@widgify/core";
 import { WiIonButtonComponent } from './button.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { WiIonButtonComponent } from './button.component';
     ],
     imports: [
         CommonModule,
-        WidgifyModule,
+        Widgify,
         // Import here any module that is used by the ion-button.
     ]
 }) export class WiIonButtonModule { }

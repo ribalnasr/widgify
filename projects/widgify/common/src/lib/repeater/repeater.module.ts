@@ -1,20 +1,20 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { WidgifyModule } from "@widgify/core";
-import { WidgifyRepeaterComponent } from './repeater.component';
+import { Widgify } from "@widgify/core";
+import { WiRepeaterComponent } from './repeater.component';
 
 @NgModule({
     declarations: [
-        WidgifyRepeaterComponent
+        WiRepeaterComponent
     ],
     exports: [
-        WidgifyRepeaterComponent
+        WiRepeaterComponent
     ],
     imports: [
         CommonModule,
-        WidgifyModule
+        Widgify
     ]
-}) export class WidgifyRepeaterModule { }
+}) export class WiRepeaterModule { }
 
 export * from './repeater.component';
 export * from './repeater.interface';

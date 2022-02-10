@@ -1,11 +1,11 @@
-import { WidgifyBase, widgifyFn } from '@widgify/core';
-import { WidgifyTextSettings } from './text.interface';
-import { WidgifyTextComponent } from './text.component';
+import { WiBase, widgifyFn } from '@widgify/core';
+import { WiTextSettings } from './text.interface';
+import { WiTextComponent } from './text.component';
 
-export class WidgifyText extends WidgifyBase<WidgifyTextSettings, null, WidgifyText> {
-	public component = WidgifyTextComponent;
-	public defaults: WidgifyTextSettings = {};
+export class WiText extends WiBase<WiTextSettings, null, WiText> {
+	public component = WiTextComponent;
+	public defaults: WiTextSettings = {};
 
 }
 
-export const widgifyText = (settings?: WidgifyTextSettings) => widgifyFn<WidgifyTextSettings, WidgifyText>(WidgifyText)(settings);
+export const wiText = (settings?: WiTextSettings) => widgifyFn<WiTextSettings, WiText>(WiText)(settings);

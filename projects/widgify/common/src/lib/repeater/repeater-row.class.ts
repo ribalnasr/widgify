@@ -1,11 +1,11 @@
-import { WidgifyRepeaterList } from "./repeater-list.class";
+import { WiRepeaterList } from "./repeater-list.class";
 
-export class WidgifyRepeaterRow<T> {
+export class WiRepeaterRow<T> {
 
 	constructor(
 		public data: T,
 		public index: number,
-		public list: WidgifyRepeaterList<T>
+		public list: WiRepeaterList<T>
 	) { }
 
 	public remove() {
@@ -19,9 +19,9 @@ export class WidgifyRepeaterRow<T> {
 }
 
 
-export const widgifyRepeaterRow = <T>(
+export const wiRepeaterRow = <T>(
 	data: T,
 	index: number,
-	list: WidgifyRepeaterList<T>
+	list: WiRepeaterList<T>
 
-) => new WidgifyRepeaterRow(data, index, list);
+) => new WiRepeaterRow(data, index, list);

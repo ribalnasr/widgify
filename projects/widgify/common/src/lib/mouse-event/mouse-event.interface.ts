@@ -1,6 +1,6 @@
-import { WidgifyBase, WidgifySettings } from '@widgify/core';
+import { WiBase, WiSettings } from '@widgify/core';
 
-export interface WidgifyMouseEventSettings extends WidgifySettings {
+export interface WiMouseEventSettings extends WiSettings {
 	click?: (event?: MouseEvent) => any;
 
 }

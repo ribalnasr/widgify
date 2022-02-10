@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { WidgifySettings } from './base.interface';
+import { WiSettings } from './base.interface';
 import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
-import { WidgifyBase, WidgifyChild, WidgifyChildFn } from './base.class';
+import { WiBase, WiChild, WiChildFn } from './base.class';
 import { filter, map, switchMap } from 'rxjs/operators';
 
 @Component({
-	selector: 'widgify-settings-base',
+	selector: 'wi-settings-base',
 	template: ''
 })
-export class WidgifySettingsBaseComponent<Settings extends WidgifySettings> {
+export class WiSettingsBaseComponent<Settings extends WiSettings> {
 
 	public settingsSourceChangeEvent$ = new ReplaySubject();
 
@@ -34,21 +34,21 @@ export class WidgifySettingsBaseComponent<Settings extends WidgifySettings> {
 }
 
 @Component({
-	selector: 'widgify-base',
+	selector: 'wi-base',
 	template: ''
 })
-export class WidgifyBaseComponent
+export class WiBaseComponent
 	<
-	Settings extends WidgifySettings = WidgifySettings,
+	Settings extends WiSettings = WiSettings,
 	DataType extends any = any,
-	Widget extends WidgifyBase<Settings, DataType> = WidgifyBase<Settings, DataType>
-	> extends WidgifySettingsBaseComponent<Settings> {
+	Widget extends WiBase<Settings, DataType> = WiBase<Settings, DataType>
+	> extends WiSettingsBaseComponent<Settings> {
 
 	public widget: Widget;
 
 	public childrenSourceChangeEvent$ = new ReplaySubject();
 
-	private _childrenSource$: BehaviorSubject<WidgifyChild<Widget, DataType>[]>;
+	private _childrenSource$: BehaviorSubject<WiChild<Widget, DataType>[]>;
 	public set childrenSource$(source) {
 		this._childrenSource$ = source;
 		this.childrenSourceChangeEvent$.next()
@@ -66,7 +66,7 @@ export class WidgifyBaseComponent
 		return this._childrenSource$?.value
 	}
 
-	public widgets: Observable<WidgifyBase[]> = this.children$.pipe(
+	public widgets: Observable<WiBase[]> = this.children$.pipe(
 		map(() => this.parseChildren())
 	)
 
@@ -76,7 +76,7 @@ export class WidgifyBaseComponent
 			child => {
 
 				let id: string;
-				let node: WidgifyChildFn<WidgifyBase, DataType>;
+				let node: WiChildFn<WiBase, DataType>;
 
 				if (Array.isArray(child)) {
 					for (const value of child) {

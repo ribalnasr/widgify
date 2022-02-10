@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { WidgifySettings } from '@widgify/core';
+import { WiSettings } from '@widgify/core';
 
-export interface WidgifyFormSettings extends WidgifySettings {
+export interface WiFormSettings extends WiSettings {
 	formGroup?: (formBuilder: FormBuilder) => FormGroup;
 }

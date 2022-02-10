@@ -1,20 +1,20 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { WidgifyModule } from "@widgify/core";
-import { WidgifyMouseEventComponent } from './mouse-event.component';
+import { Widgify } from "@widgify/core";
+import { WiMouseEventComponent } from './mouse-event.component';
 
 @NgModule({
     declarations: [
-        WidgifyMouseEventComponent
+        WiMouseEventComponent
     ],
     exports: [
-        WidgifyMouseEventComponent
+        WiMouseEventComponent
     ],
     imports: [
         CommonModule,
-        WidgifyModule
+        Widgify
     ]
-}) export class WidgifyMouseEventModule { }
+}) export class WiMouseEventModule { }
 
 export * from './mouse-event.component';
 export * from './mouse-event.interface';

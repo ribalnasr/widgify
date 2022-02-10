@@ -1,15 +1,15 @@
-import { WidgifyBase, widgifyFn } from '@widgify/core';
-import { WidgifyIframeSettings } from './iframe.interface';
-import { WidgifyIframeComponent } from './iframe.component';
+import { WiBase, widgifyFn } from '@widgify/core';
+import { WiIframeSettings } from './iframe.interface';
+import { WiIframeComponent } from './iframe.component';
 
-export class WidgifyIframe extends WidgifyBase<WidgifyIframeSettings, null, WidgifyIframe> {
-	public component = WidgifyIframeComponent;
+export class WiIframe extends WiBase<WiIframeSettings, null, WiIframe> {
+	public component = WiIframeComponent;
 
 	/**
 	 * The default settings for Iframe.
 	 */
-	public defaults: WidgifyIframeSettings = {};
+	public defaults: WiIframeSettings = {};
 
 }
 
-export const widgifyIframe = widgifyFn<WidgifyIframeSettings, WidgifyIframe>(WidgifyIframe);
+export const wiIframe = widgifyFn<WiIframeSettings, WiIframe>(WiIframe);

@@ -1,5 +1,5 @@
-import { WidgifyBase, WidgifySettings } from '@widgify/core';
+import { WiBase, WiSettings } from '@widgify/core';
 
-export interface WidgifyTextSettings extends WidgifySettings {
+export interface WiTextSettings extends WiSettings {
 	content?: string | number;
 }

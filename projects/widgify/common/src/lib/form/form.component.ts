@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { WidgifyFormSettings } from './form.interface';
-import { WidgifyBaseComponent } from '@widgify/core';
+import { WiFormSettings } from './form.interface';
+import { WiBaseComponent } from '@widgify/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { map } from 'rxjs/operators';
-import { WidgifyForm } from './form.class';
+import { WiForm } from './form.class';
 @Component({
-	selector: 'widgify-form',
+	selector: 'wi-form',
 	templateUrl: './form.component.html',
 })
-export class WidgifyFormComponent extends WidgifyBaseComponent<WidgifyFormSettings, FormGroup, WidgifyForm> {
+export class WiFormComponent extends WiBaseComponent<WiFormSettings, FormGroup, WiForm> {
 
 	constructor(
 		public formBuilder: FormBuilder,

@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { WidgifyModule } from "@widgify/core";
+import { Widgify } from "@widgify/core";
 import { WiIonColComponent } from './col.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { WiIonColComponent } from './col.component';
     ],
     imports: [
         CommonModule,
-        WidgifyModule,
+        Widgify,
         // Import here any module that is used by the ion-col.
     ]
 }) export class WiIonColModule { }

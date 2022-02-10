@@ -1,6 +1,6 @@
 import { ReplaySubject } from "rxjs";
 
-export class WidgifyRepeaterList<T> {
+export class WiRepeaterList<T> {
 
 	public valueChanges = new ReplaySubject<T[]>();
 
@@ -46,4 +46,4 @@ export class WidgifyRepeaterList<T> {
 
 }
 
-export const widgifyRepeaterList = <T>(data: T[]) => new WidgifyRepeaterList(data);
+export const wiRepeaterList = <T>(data: T[]) => new WiRepeaterList(data);

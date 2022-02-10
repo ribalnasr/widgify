@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { WidgifyModule } from '@widgify/core';
-import { WidgifyCommonModule } from '@widgify/common';
+import { Widgify } from '@widgify/core';
+import { WiCommonModule } from '@widgify/common';
 import { WiIonicModule } from '@widgify/ionic';
 
 
@@ -16,8 +16,8 @@ import { WiIonicModule } from '@widgify/ionic';
     CommonModule,
     FormsModule,
     IonicModule,
-    WidgifyModule,
-    WidgifyCommonModule,
+    Widgify,
+    WiCommonModule,
     WiIonicModule,
     HomePageRoutingModule,
     ReactiveFormsModule

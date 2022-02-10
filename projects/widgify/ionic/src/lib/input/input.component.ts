@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { WiIonBaseComponent } from '../base/base.component';
 import { WiIonInput } from './input.class';
 @Component({
-	selector: 'widgify-ion-input',
+	selector: 'wi-ion-input',
 	templateUrl: './input.component.html',
 })
 export class WiIonInputComponent extends WiIonBaseComponent<WiIonInputSettings, null, WiIonInput> {

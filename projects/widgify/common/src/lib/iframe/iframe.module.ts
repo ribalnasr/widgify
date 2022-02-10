@@ -1,21 +1,21 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { WidgifyModule } from "@widgify/core";
-import { WidgifyIframeComponent } from './iframe.component';
+import { Widgify } from "@widgify/core";
+import { WiIframeComponent } from './iframe.component';
 
 @NgModule({
     declarations: [
-        WidgifyIframeComponent
+        WiIframeComponent
     ],
     exports: [
-        WidgifyIframeComponent
+        WiIframeComponent
     ],
     imports: [
         CommonModule,
-        WidgifyModule,
+        Widgify,
         // Import here any module that is used by the iframe.
     ]
-}) export class WidgifyIframeModule { }
+}) export class WiIframeModule { }
 
 export * from './iframe.component';
 export * from './iframe.interface';

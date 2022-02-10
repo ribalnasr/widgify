@@ -1,22 +1,22 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
-import { WidgifyModule } from "@widgify/core";
-import { WidgifyFormComponent } from './form.component';
+import { Widgify } from "@widgify/core";
+import { WiFormComponent } from './form.component';
 
 @NgModule({
     declarations: [
-        WidgifyFormComponent
+        WiFormComponent
     ],
     exports: [
-        WidgifyFormComponent
+        WiFormComponent
     ],
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        WidgifyModule
+        Widgify
     ]
-}) export class WidgifyFormModule { }
+}) export class WiFormModule { }
 
 export * from './form.component';
 export * from './form.interface';
