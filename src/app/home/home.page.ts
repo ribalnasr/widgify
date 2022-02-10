@@ -18,7 +18,7 @@ export class HomePage {
   })
 
   public text = wiText({
-    content: 'text goes here'
+    text: 'text goes here'
   })
 
   public form = wiForm({
@@ -42,14 +42,14 @@ export class HomePage {
     )
     // wiIonItem().content(
     //   wiIonLabel().content(
-    //     wiText({ content: 'Name' })
+    //     wiText({ text: 'Name' })
     //   ),
     //   wiIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
     // ),
     // (parent, formGroup) => {
     //   return wiIonItem().content(
     //     wiIonLabel().content(
-    //       wiText({ content: 'SurName' })
+    //       wiText({ text: 'SurName' })
     //     ),
     //     wiIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
     //   );
@@ -70,7 +70,7 @@ export class HomePage {
   //       console.log(row)
   //       return row.update(7);
   //     },
-  //     widget: wiText({ content: row.data })
+  //     widget: wiText({ text: row.data })
   //   })
   // })
 
@@ -85,16 +85,16 @@ export class HomePage {
     }).content(
       parent => {
         parent
-        return wiText({ content: 'Click me!' });
+        return wiText({ text: 'Click me!' });
       },
       wiText({
-        content: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
+        text: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
       })
     ),
   )
 
   public idTest = wiIonGrid({ fixed: true, }).content(
-    ['egrwtrb', () => wiText({ content: 'test' })]
+    ['egrwtrb', () => wiText({ text: 'test' })]
   )
 
 
@@ -105,22 +105,55 @@ export class HomePage {
         parent => wiMouseEvent({
           click: () => {
             parent.removeChildById('ID2').insertChild(
-              [wiText({ content: 'ID4' }), 'ID4'],
+              [wiText({ text: 'ID4' }), 'ID4'],
 
             )
           }
         }).content(
-          wiText({ content: 'click here to remove by id' })
+          wiText({ text: 'click here to remove by id' })
         ),
-        [wiText({ content: 'ID1' }), 'ID1'],
-        [wiText({ content: 'ID2' }), 'ID2'],
-        [wiText({ content: 'ID3' }), 'ID3'],
+        [wiText({ text: 'ID1' }), 'ID1'],
+        [wiText({ text: 'ID2' }), 'ID2'],
+        [wiText({ text: 'ID3' }), 'ID3'],
       )
     )
   )
 
 
 
-  public widget = this.grid
+  public widget = wiIonGrid({
+    fixed: true
+  }).content(
+    wiIonRow().content(
+      wiIonCol({ size: "6" }).content(
+        wiText({ text: 'Hello world!' })
+      ),
+      parent => {
+        parent['test'] = 1;
+        return wiIonCol({ size: "6" }).content(
+
+          wiMouseEvent({
+            click: () => {
+              parent['test']++;
+            }
+          }).content(
+
+
+            wiIonButton({
+              color: 'secondary',
+              shape: 'round',
+            }).content(
+              wiIonIcon({ name: 'pencil', slot: 'start' }),
+              wiText({ text: 'Click to play!' })
+            )
+          )
+        );
+      },
+      parent => wiIonCol({ size: "12" }).content(
+        wiText({ text: parent['test'] })
+      ),
+
+    )
+  )
 
 }
