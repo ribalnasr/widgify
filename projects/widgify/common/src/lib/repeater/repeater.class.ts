@@ -1,12 +1,15 @@
-import { WiBase, widgifyFn } from '@widgify/core';
+import { WiBase } from '@widgify/core';
 import { WiRepeaterSettings } from './repeater.interface';
 import { WiRepeaterComponent } from './repeater.component';
 import { WiRepeaterList } from './repeater-list.class';
+import { Type } from '@angular/core';
 
-export class WiRepeater<T = any> extends WiBase<WiRepeaterSettings<T>> {
-	public component = WiRepeaterComponent;
-	public defaults: WiRepeaterSettings<T> = { list: new WiRepeaterList<T>() };
+export class WiRepeater<Props = any, DataType = any> extends WiBase<WiRepeaterSettings<DataType>, DataType, WiRepeater<Props, DataType>, Props> {
+	public component: Type<WiRepeaterComponent<Props, DataType>> = WiRepeaterComponent;
+	public defaults: WiRepeaterSettings<DataType> = { list: new WiRepeaterList<DataType>() };
 
 }
 
-export const wiRepeater = <T = any>(settings?: WiRepeaterSettings<T>) => widgifyFn<WiRepeaterSettings<T>, WiRepeater<T>>(WiRepeater)(settings);
+export const wiRepeater =
+	<Props, DataType = any>(settings?: WiRepeaterSettings<DataType>, props?: Props) =>
+		new WiRepeater(settings, props) as WiRepeater<Props, DataType>;

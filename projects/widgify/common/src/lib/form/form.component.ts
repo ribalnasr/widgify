@@ -8,6 +8,7 @@ import { WiForm } from './form.class';
 	selector: 'wi-form',
 	templateUrl: './form.component.html',
 })
+// export class WiFormComponent<Props = any> extends WiBaseComponent<WiFormSettings, FormGroup, WiForm<Props>> {
 export class WiFormComponent extends WiBaseComponent<WiFormSettings, FormGroup, WiForm> {
 
 	constructor(
@@ -16,9 +17,9 @@ export class WiFormComponent extends WiBaseComponent<WiFormSettings, FormGroup, 
 		super();
 	}
 
-	public widgets = this.settings$.pipe(
+	public widgets = this.changes$.pipe(
 		map(
-			(settings) => {
+			([settings]) => {
 				const formGroup = settings.formGroup(this.formBuilder);
 				return this.parseChildren(formGroup);
 			}

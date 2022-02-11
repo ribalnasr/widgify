@@ -11,11 +11,11 @@ import { WiData } from './data.class';
 	encapsulation: ViewEncapsulation.Emulated,
 
 })
-export class WiDataComponent<DataType extends any = any> extends WiBaseComponent<WiDataSettings<DataType>, DataType, WiData<DataType>> {
+export class WiDataComponent<Props = any, DataType = any> extends WiBaseComponent<WiDataSettings<DataType>, DataType, WiData<Props, DataType>> {
 
-	public widgets = this.settings$.pipe(
+	public widgets = this.changes$.pipe(
 		switchMap(
-			settings => this.toObservables(settings.data),
+			([settings]) => this.toObservables(settings.data),
 		),
 		map(
 			(data: DataType) => {

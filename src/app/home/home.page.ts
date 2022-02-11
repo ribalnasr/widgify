@@ -1,5 +1,4 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { wiBase } from '@widgify/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { wiData, wiForm, wiText, wiRepeater, wiMouseEvent, wiRepeaterList } from '@widgify/common';
 import { wiIonButton, wiIonCol, wiIonGrid, wiIonIcon, wiIonInput, wiIonItem, wiIonLabel, wiIonRow } from '@widgify/ionic';
@@ -12,49 +11,9 @@ import { Validators } from '@angular/forms';
 })
 export class HomePage {
 
-
-  public base = wiBase({
-    class: 'base'
-  })
-
   public text = wiText({
     text: 'text goes here'
   })
-
-  public form = wiForm({
-    formGroup: formBuilder => formBuilder.group({
-      name: ['', Validators.required],
-      surname: ['nasr', Validators.required],
-    })
-  }).content(
-    wiForm({
-      formGroup: formBuilder => formBuilder.group({
-        name: ['', Validators.required],
-        surname: ['nasr', Validators.required],
-      })
-    }).content(
-      wiForm({
-        formGroup: formBuilder => formBuilder.group({
-          name: ['', Validators.required],
-          surname: ['nasr', Validators.required],
-        })
-      })
-    )
-    // wiIonItem().content(
-    //   wiIonLabel().content(
-    //     wiText({ text: 'Name' })
-    //   ),
-    //   wiIonInput({ value: 'Ribal', placeholder: 'Please enter your name.' })
-    // ),
-    // (parent, formGroup) => {
-    //   return wiIonItem().content(
-    //     wiIonLabel().content(
-    //       wiText({ text: 'SurName' })
-    //     ),
-    //     wiIonInput({ formControl: formGroup.controls.surname, placeholder: 'Please enter your surname.' })
-    //   );
-    // },
-  )
 
 
   public ionInput = wiIonInput({
@@ -74,24 +33,31 @@ export class HomePage {
   //   })
   // })
 
-  private clickCount = new BehaviorSubject<number>(0);
+  // private clickCount = new BehaviorSubject<number>(0);
   public dynamicWidget = wiData({
-    data: this.clickCount
-  }).content(
-    (parent, count) => wiMouseEvent({
-      click: () => {
-        this.clickCount.next(count + 1)
-      }
-    }).content(
-      parent => {
-        parent
-        return wiText({ text: 'Click me!' });
+    // data: this.clickCount
+  }, {
+    test: 1
+  })
+    .content(
+      (parent) => {
+        return wiMouseEvent({
+          click: () => {
+            // this.clickCount.next(count + 1);
+            parent.updateProps({
+              test: 2
+            })
+          }
+        }).content(
+          parent => {
+            return wiText({ text: 'Click me!' });
+          },
+          wiText({
+            text: ` Clicked ${parent.props.test} time${parent.props.test > 1 ? 's.' : '.'}`
+          })
+        );
       },
-      wiText({
-        text: ` Clicked ${count} time${count > 1 ? 's.' : '.'}`
-      })
-    ),
-  )
+    )
 
   public idTest = wiIonGrid({ fixed: true, }).content(
     ['egrwtrb', () => wiText({ text: 'test' })]
@@ -121,10 +87,12 @@ export class HomePage {
 
 
 
-  public widget = wiIonGrid({
+  public widget = this.dynamicWidget;
+
+  public ionic = wiIonGrid({
     fixed: true
   }).content(
-    wiIonRow().content(
+    wiIonRow({}).content(
       wiIonCol({ size: "6" }).content(
         wiText({ text: 'Hello world!' })
       ),
@@ -135,6 +103,8 @@ export class HomePage {
           wiMouseEvent({
             click: () => {
               parent['test']++;
+
+              parent.removeChild(parent.children.length - 1)
             }
           }).content(
 

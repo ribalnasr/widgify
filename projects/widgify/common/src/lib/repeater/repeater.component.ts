@@ -4,11 +4,12 @@ import { WiBaseComponent } from '@widgify/core';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { WiRepeaterList } from './repeater-list.class';
 import { WiRepeaterRow } from './repeater-row.class';
+import { WiRepeater } from './repeater.class';
 @Component({
 	selector: 'wi-repeater',
 	templateUrl: './repeater.component.html',
 })
-export class WiRepeaterComponent<T> extends WiBaseComponent<WiRepeaterSettings<T>> {
+export class WiRepeaterComponent<Props, T> extends WiBaseComponent<WiRepeaterSettings<T>, T, WiRepeater<Props, T>> {
 
 	public widgets = this.settings$.pipe(
 		map(

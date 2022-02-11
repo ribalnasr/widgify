@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
 import { WiSettings } from './base.interface';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, ReplaySubject } from 'rxjs';
 import { WiBase, WiChild, WiChildFn } from './base.class';
 import { filter, map, switchMap } from 'rxjs/operators';
 
+
 @Component({
-	selector: 'wi-settings-base',
+	selector: 'wi-base',
 	template: ''
 })
-export class WiSettingsBaseComponent<Settings extends WiSettings> {
+export class WiBaseComponent
+	<
+	Settings extends WiSettings = WiSettings,
+	DataType extends any = any,
+	Widget extends WiBase<Settings, DataType> = WiBase<Settings, DataType>
+	> {
+
+	public widget: Widget;
 
 	public settingsSourceChangeEvent$ = new ReplaySubject();
 
@@ -30,25 +38,29 @@ export class WiSettingsBaseComponent<Settings extends WiSettings> {
 		return this._settingsSource$?.value
 	}
 
+	public propsSourceChangeEvent$ = new ReplaySubject();
 
-}
+	private _propsSource$: BehaviorSubject<any>;
+	public set propsSource$(source) {
+		this._propsSource$ = source;
+		this.propsSourceChangeEvent$.next()
+	}
+	public get propsSource$() {
+		return this._propsSource$;
+	}
 
-@Component({
-	selector: 'wi-base',
-	template: ''
-})
-export class WiBaseComponent
-	<
-	Settings extends WiSettings = WiSettings,
-	DataType extends any = any,
-	Widget extends WiBase<Settings, DataType> = WiBase<Settings, DataType>
-	> extends WiSettingsBaseComponent<Settings> {
+	public props$ = this.propsSourceChangeEvent$.pipe(
+		filter(() => !!this.propsSource$),
+		switchMap(() => this.propsSource$)
+	)
 
-	public widget: Widget;
+	public get props() {
+		return this._propsSource$?.value
+	}
 
 	public childrenSourceChangeEvent$ = new ReplaySubject();
 
-	private _childrenSource$: BehaviorSubject<WiChild<Widget, DataType>[]>;
+	private _childrenSource$: BehaviorSubject<WiChild<Widget>[]>;
 	public set childrenSource$(source) {
 		this._childrenSource$ = source;
 		this.childrenSourceChangeEvent$.next()
@@ -66,7 +78,10 @@ export class WiBaseComponent
 		return this._childrenSource$?.value
 	}
 
-	public widgets: Observable<WiBase[]> = this.children$.pipe(
+	public changes$ = combineLatest([this.settings$, this.props$, this.children$])
+
+
+	public widgets: Observable<WiBase[]> = this.changes$.pipe(
 		map(() => this.parseChildren())
 	)
 
@@ -76,7 +91,7 @@ export class WiBaseComponent
 			child => {
 
 				let id: string;
-				let node: WiChildFn<WiBase, DataType>;
+				let node: WiChildFn<WiBase>;
 
 				if (Array.isArray(child)) {
 					for (const value of child) {

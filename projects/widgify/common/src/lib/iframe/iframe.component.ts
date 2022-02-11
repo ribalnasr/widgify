@@ -11,8 +11,8 @@ import { WiIframe } from './iframe.class';
 })
 export class WiIframeComponent extends WiBaseComponent<WiIframeSettings, null, WiIframe> {
 
-	public sanitizedSrc = this.settings$.pipe(
-		map(settings => settings.src && this.sanitizer.bypassSecurityTrustResourceUrl(settings.src))
+	public sanitizedSrc = this.changes$.pipe(
+		map(([settings]) => settings.src && this.sanitizer.bypassSecurityTrustResourceUrl(settings.src))
 	)
 
 	constructor(

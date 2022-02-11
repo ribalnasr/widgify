@@ -35,6 +35,7 @@ export class WiDirective<WidgetType extends WiBase = WiBase> {
 			this.componentRef = this.viewContainerRef.createComponent(factory);
 			this.componentRef.instance.childrenSource$ = widget.children$;
 			this.componentRef.instance.settingsSource$ = widget.settings$;
+			this.componentRef.instance.propsSource$ = widget.props$;
 			this.componentRef.instance.widget = widget;
 			this.viewContainerRef.insert(this.componentRef.hostView)
 		}

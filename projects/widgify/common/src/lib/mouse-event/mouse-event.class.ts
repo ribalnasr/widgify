@@ -1,11 +1,13 @@
-import { WiBase, widgifyFn } from '@widgify/core';
+import { WiBase } from '@widgify/core';
 import { WiMouseEventSettings } from './mouse-event.interface';
 import { WiMouseEventComponent } from './mouse-event.component';
 
-export class WiMouseEvent extends WiBase<WiMouseEventSettings, null, WiMouseEvent> {
+export class WiMouseEvent<Props = any> extends WiBase<WiMouseEventSettings, null, WiMouseEvent, Props> {
 	public component = WiMouseEventComponent;
 	public defaults: WiMouseEventSettings = {};
 
 }
 
-export const wiMouseEvent = widgifyFn<WiMouseEventSettings, WiMouseEvent>(WiMouseEvent);
+export const wiMouseEvent =
+	<Props>(settings?: WiMouseEventSettings, props?: Props) =>
+		new WiMouseEvent(settings, props) as WiMouseEvent<Props>;

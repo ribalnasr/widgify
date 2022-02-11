@@ -1,8 +1,8 @@
-import { WiBase, widgifyFn } from '@widgify/core';
+import { WiBase } from '@widgify/core';
 import { WiTemplateSettings } from './template.interface';
 import { WiTemplateComponent } from './template.component';
 
-export class WiTemplate extends WiBase<WiTemplateSettings, null, WiTemplate> {
+export class WiTemplate<Props = any> extends WiBase<WiTemplateSettings, null, WiTemplate<Props>> {
 	public component = WiTemplateComponent;
 
 	/**
@@ -12,4 +12,6 @@ export class WiTemplate extends WiBase<WiTemplateSettings, null, WiTemplate> {
 
 }
 
-export const wiTemplate = (settings?: WiTemplateSettings) => widgifyFn<WiTemplateSettings, WiTemplate>(WiTemplate)(settings);
+export const wiTemplate =
+	<Props>(settings?: WiTemplateSettings, props?: Props) =>
+		new WiTemplate(settings, props) as WiTemplate<Props>;

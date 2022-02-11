@@ -3,28 +3,51 @@ import { WiBaseComponent } from './base.component';
 import { Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export class WiSettingsBase<
+export type WiChildFn
+    <
+    Parent extends WiBase<WiSettings, any>,
+    DataType extends any = any,
+    > = ((parent: Parent, data?: DataType) => WiBase)
+    | WiBase;
+
+export type WiChild
+    <
+    Parent extends WiBase,
+    DataType extends any = any,
+    > = WiChildFn<Parent, DataType>
+    | [string, WiChildFn<Parent, DataType>]
+    | [WiChildFn<Parent, DataType>, string];
+
+export class WiBase
+    <
     Settings extends WiSettings = WiSettings,
     DataType extends any = any,
-    Widget extends WiBase<Settings, DataType> = any
-    >  {
+    Widget extends WiBase<Settings, DataType> = any,
+    Props = any
+    > {
 
     public component: Type<WiBaseComponent<Settings, DataType, Widget>> = WiBaseComponent;
-    public defaults: Settings = {} as WiSettings as Settings;
 
+    constructor(
+        public initialSettings?: Settings,
+        public initialProps?: Props
+    ) {
+        this.setSettings(initialSettings);
+        this.setProps(initialProps);
+    }
+
+    public defaults: Settings = {} as WiSettings as Settings;
     public settings$ = new BehaviorSubject<Settings>(this.defaults);
 
     public get settings() {
         return this.settings$.value;
     }
 
-    constructor(
-        settings?: Settings
-    ) {
-        this.updateSettings(settings)
+    public setSettings(settings?: Settings) {
+        this.settings$.next(settings);
     }
 
-    updateSettings(settings?: Settings) {
+    public updateSettings(settings?: Partial<Settings>) {
         if (settings) {
 
             const updatedSettings = {
@@ -37,33 +60,28 @@ export class WiSettingsBase<
         return this;
     }
 
-}
+    public props$ = new BehaviorSubject<Props>({} as Props);
 
+    public get props() {
+        return this.props$.value;
+    }
 
-export type WiChildFn
-    <
-    Parent extends WiBase,
-    DataType extends any = any
-    > = ((parent: Parent, data?: DataType) => WiBase)
-    | WiBase;
+    public setProps(props?: Props) {
+        this.props$.next(props);
+    }
 
-export type WiChild
-    <
-    Parent extends WiBase,
-    DataType extends any = any
-    > = WiChildFn<Parent, DataType>
-    | [string, WiChildFn<Parent, DataType>]
-    | [WiChildFn<Parent, DataType>, string];
+    public updateProps(props?: Partial<Props>) {
+        if (props) {
 
-export class WiBase
-    <
-    Settings extends WiSettings = WiSettings,
-    DataType extends any = any,
-    Widget extends WiBase<Settings, DataType> = any
-    >
-    extends WiSettingsBase<Settings>  {
+            const updatedProps = {
+                ...this.props,
+                ...props
+            };
 
-
+            this.props$.next(updatedProps);
+        }
+        return this;
+    }
 
     public children$ = new BehaviorSubject<WiChild<Widget, DataType>[]>([]);
 
@@ -95,14 +113,18 @@ export class WiBase
         this.children$.next(children);
         return this;
     }
+
 }
 
-
+/**
+ * 
+ * @deprecated
+ * 
+ */
 export function widgifyFn<Settings extends WiSettings = WiSettings, Widget extends WiBase<Settings> = WiBase<Settings>>(widget: Type<Widget>) {
     return (settings?: Settings) => new widget(settings) as Widget;
 }
 
-export const wiBase = widgifyFn(WiBase);
 
 
 

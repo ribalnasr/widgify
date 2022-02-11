@@ -1,8 +1,8 @@
-import { WiBase, widgifyFn } from '@widgify/core';
+import { WiBase } from '@widgify/core';
 import { WiIframeSettings } from './iframe.interface';
 import { WiIframeComponent } from './iframe.component';
 
-export class WiIframe extends WiBase<WiIframeSettings, null, WiIframe> {
+export class WiIframe<Props = any> extends WiBase<WiIframeSettings, null, WiIframe, Props> {
 	public component = WiIframeComponent;
 
 	/**
@@ -12,4 +12,6 @@ export class WiIframe extends WiBase<WiIframeSettings, null, WiIframe> {
 
 }
 
-export const wiIframe = widgifyFn<WiIframeSettings, WiIframe>(WiIframe);
+export const wiIframe =
+	<Props>(settings?: WiIframeSettings, props?: Props) =>
+		new WiIframe(settings, props) as WiIframe<Props>;
