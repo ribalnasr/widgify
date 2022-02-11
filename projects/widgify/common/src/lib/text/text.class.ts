@@ -1,4 +1,4 @@
-import { WiBase } from '@widgify/core';
+import { WiBase, wiBaseFn } from '@widgify/core';
 import { WiTextSettings } from './text.interface';
 import { WiTextComponent } from './text.component';
 
@@ -9,5 +9,4 @@ export class WiText<Props = any> extends WiBase<WiTextSettings, null, WiText<Pro
 }
 
 export const wiText =
-	<Props>(settings?: WiTextSettings, props?: Props) =>
-		new WiText(settings, props) as WiText<Props>;
+	wiBaseFn<WiTextSettings, null, WiText<any>, any>(WiText);

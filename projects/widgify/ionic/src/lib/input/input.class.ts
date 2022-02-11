@@ -1,16 +1,13 @@
 import { WiIonInputSettings } from './input.interface';
 import { WiIonInputComponent } from './input.component';
 import { WiIonBase } from '../base/base.class';
-import { widgifyFn } from '@widgify/core';
+import { wiBaseFn } from '@widgify/core';
 
-export class WiIonInput extends WiIonBase<WiIonInputSettings, null, WiIonInput> {
+
+export class WiIonInput<Props = any> extends WiIonBase<WiIonInputSettings, null, WiIonInput<Props>, Props> {
 	public component = WiIonInputComponent;
-	public defaults: WiIonInputSettings = {
-		type: 'text',
-		readonly: false,
-		required: false
-	};
-
+	public defaults: WiIonInputSettings = {};
 }
 
-export const wiIonInput = (settings?: WiIonInputSettings) => widgifyFn<WiIonInputSettings, WiIonInput>(WiIonInput)(settings);
+export const wiIonInput =
+	wiBaseFn<WiIonInputSettings, null, WiIonInput<any>, any>(WiIonInput);

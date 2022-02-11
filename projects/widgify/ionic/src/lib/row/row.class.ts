@@ -1,16 +1,13 @@
 import { WiIonRowSettings } from './row.interface';
 import { WiIonRowComponent } from './row.component';
 import { WiIonBase } from '../base/base.class';
-import { widgifyFn } from '@widgify/core';
+import { wiBaseFn } from '@widgify/core';
 
-export class WiIonRow extends WiIonBase<WiIonRowSettings, null, WiIonRow> {
+
+export class WiIonRow<Props = any> extends WiIonBase<WiIonRowSettings, null, WiIonRow<Props>, Props> {
 	public component = WiIonRowComponent;
-
-	/**
-	 * The default settings for IonRow.
-	 */
 	public defaults: WiIonRowSettings = {};
-
 }
 
-export const wiIonRow = (settings?: WiIonRowSettings) => widgifyFn<WiIonRowSettings, WiIonRow>(WiIonRow)(settings);
+export const wiIonRow =
+	wiBaseFn<WiIonRowSettings, null, WiIonRow<any>, any>(WiIonRow);

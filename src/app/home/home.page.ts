@@ -33,14 +33,14 @@ export class HomePage {
   //   })
   // })
 
-  // private clickCount = new BehaviorSubject<number>(0);
+  private clickCount = new BehaviorSubject<number>(0);
   public dynamicWidget = wiData({
-    // data: this.clickCount
+    data: this.clickCount
   }, {
     test: 1
   })
     .content(
-      (parent) => {
+      (parent, data) => {
         return wiMouseEvent({
           click: () => {
             // this.clickCount.next(count + 1);
@@ -63,7 +63,11 @@ export class HomePage {
     ['egrwtrb', () => wiText({ text: 'test' })]
   )
 
-
+  public repeater = wiRepeater({
+    list: ['1', 2, 3]
+  }).content(
+    (parent, extras) => wiText({ text: extras.row.data })
+  )
 
   public grid = wiIonGrid({ fixed: true, }).content(
     parent => wiIonRow().content(
@@ -87,7 +91,7 @@ export class HomePage {
 
 
 
-  public widget = this.dynamicWidget;
+  public widget = this.repeater;
 
   public ionic = wiIonGrid({
     fixed: true

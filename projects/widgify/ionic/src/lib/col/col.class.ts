@@ -1,16 +1,13 @@
 import { WiIonColSettings } from './col.interface';
 import { WiIonColComponent } from './col.component';
 import { WiIonBase } from '../base/base.class';
-import { widgifyFn } from '@widgify/core';
+import { wiBaseFn } from '@widgify/core';
 
-export class WiIonCol extends WiIonBase<WiIonColSettings, null, WiIonCol> {
+
+export class WiIonCol<Props = any> extends WiIonBase<WiIonColSettings, null, WiIonCol<Props>, Props> {
 	public component = WiIonColComponent;
-
-	/**
-	 * The default settings for IonCol.
-	 */
 	public defaults: WiIonColSettings = {};
-
 }
 
-export const wiIonCol = (settings?: WiIonColSettings) => widgifyFn<WiIonColSettings, WiIonCol>(WiIonCol)(settings);
+export const wiIonCol =
+	wiBaseFn<WiIonColSettings, null, WiIonCol<any>, any>(WiIonCol);

@@ -21,7 +21,7 @@ export type WiChild
 export class WiBase
     <
     Settings extends WiSettings = WiSettings,
-    DataType extends any = any,
+    DataType extends any = null,
     Widget extends WiBase<Settings, DataType> = any,
     Props = any
     > {
@@ -36,7 +36,7 @@ export class WiBase
         this.setProps(initialProps);
     }
 
-    public defaults: Settings = {} as WiSettings as Settings;
+    public defaults: Settings = {} as Settings;
     public settings$ = new BehaviorSubject<Settings>(this.defaults);
 
     public get settings() {
@@ -116,15 +116,16 @@ export class WiBase
 
 }
 
-/**
- * 
- * @deprecated
- * 
- */
-export function widgifyFn<Settings extends WiSettings = WiSettings, Widget extends WiBase<Settings> = WiBase<Settings>>(widget: Type<Widget>) {
-    return (settings?: Settings) => new widget(settings) as Widget;
-}
+export const wiBase =
+    <Props, DataType = null>(settings?: WiSettings, props?: Props) =>
+        new WiBase(settings, props) as WiBase<Props, DataType>;
 
-
-
-
+export const wiBaseFn =
+    <
+        Settings extends WiSettings = WiSettings,
+        DataType extends any = null,
+        Widget extends WiBase<Settings, DataType> = any,
+        Props = any
+    >(widget: Type<Widget>) =>
+        (settings?: WiSettings, props?: Props) =>
+            new widget(settings, props) as Widget;
